@@ -76,10 +76,7 @@ const FoldingDorCabinet = () => {
             valueVariable={[cabinetValues.edge_color, update, "edge_color"]}
           />
           <CheckBox TitleText={"Inmatur kemur frá Nobilia"} />
-          <CheckBox
-            TitleText={"Inmatur kemur ekki réttur fra Nobilia"}
-            mt={0}
-          />
+          <CheckBox TitleText={"Þarf að breyta hjá GKS"} mt={0} />
         </Grid>
       </Grid>
 
@@ -104,8 +101,8 @@ const FoldingDorCabinet = () => {
 
       <Grid container gap={4} pt={2} className='container'>
         <CheckBox TitleText={"Ljós í hillu"} />
-        <CheckBox TitleText={"Hillu kemur frá Nobila"} />
-        <CheckBox TitleText={"Hillur ekki pantaðar í réttri stærð"} />
+        <CheckBox TitleText={"Hillur kemur frá Nobila"} />
+        <CheckBox TitleText={"Þarf að breyta hjá GKS"} />
       </Grid>
 
       <Grid container gap={4} mt={1} className='container'>
@@ -129,7 +126,7 @@ const FoldingDorCabinet = () => {
 
       <Grid container gap={4} pt={2} className='container'>
         <CheckBox TitleText={"Hurðir koma frá Nobilia"} />
-        <CheckBox TitleText={"Hurðir ekki pantaðar í réttri stærð"} />
+        <CheckBox TitleText={"Þarf að breyta hjá GKS"} />
       </Grid>
 
       <Grid container mt={1} mb={4} className='container'>
