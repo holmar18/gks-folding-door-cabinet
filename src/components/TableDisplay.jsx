@@ -83,7 +83,7 @@ const TableDisplay = ({cv}) => {
         style={{
           padding: "0.4rem",
         }}>
-        <b>Customer: {cv.customer}</b>
+        <b>Viðskiptavinur: {cv.customer}</b>
       </span>
       <TableContainer component={Paper}>
         <Table sx={{minWidth: 700}} aria-label='customized table'>
@@ -136,7 +136,7 @@ const TableDisplay = ({cv}) => {
         </Table>
       </TableContainer>
       <span style={{marginLeft: "auto", minWidth: "10rem", padding: "0.4rem"}}>
-        <b>Seller: {cv.seller}</b>
+        <b>Sölumaður: {cv.seller}</b>
       </span>
     </>
   );

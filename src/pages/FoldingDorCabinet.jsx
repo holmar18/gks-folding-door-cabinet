@@ -20,16 +20,16 @@ const FoldingDorCabinet = () => {
 
   return (
     <>
-      <h1>Folding Door Cabinet</h1>
+      <h1>Tækjaskápur</h1>
       <Divider />
       <Grid container gap={4} pt={1} className='container'>
         <Input
-          TitleText={"Customer"}
+          TitleText={"Viðskiptavinur"}
           size={4}
           valueVariable={[cabinetValues.customer, update, "customer"]}
         />
         <Input
-          TitleText={"Seller"}
+          TitleText={"Sölumaður"}
           autoComplete={"nickname"}
           valueVariable={[cabinetValues.seller, update, "seller"]}
         />
@@ -43,17 +43,17 @@ const FoldingDorCabinet = () => {
 
         <Grid item xs={4} gap={4}>
           <Input
-            TitleText={"Width"}
+            TitleText={"Breidd"}
             type='number'
             valueVariable={[cabinetValues.width, update, "width"]}
           />
           <Input
-            TitleText={"Height"}
+            TitleText={"Hæð"}
             type='number'
             valueVariable={[cabinetValues.height, update, "height"]}
           />
           <Input
-            TitleText={"Depth"}
+            TitleText={"Dýpt"}
             type='number'
             valueVariable={[cabinetValues.depth, update, "depth"]}
           />
@@ -61,10 +61,10 @@ const FoldingDorCabinet = () => {
             values={[16, 19]}
             update={update}
             changeLabel='thickness'
-            label='Thickness'
+            label='Þykkt'
           />
           <Input
-            TitleText={"Carcase color"}
+            TitleText={"Innmatur litur"}
             valueVariable={[
               cabinetValues.carcase_color,
               update,
@@ -72,12 +72,12 @@ const FoldingDorCabinet = () => {
             ]}
           />
           <Input
-            TitleText={"Edge banding color"}
+            TitleText={"Kantlíming litur"}
             valueVariable={[cabinetValues.edge_color, update, "edge_color"]}
           />
-          <CheckBox TitleText={"Carcase material from Nobilia"} />
+          <CheckBox TitleText={"Inmatur kemur frá Nobilia"} />
           <CheckBox
-            TitleText={"Carcase ordered in correct dimensions"}
+            TitleText={"Inmatur kemur ekki réttur fra Nobilia"}
             mt={0}
           />
         </Grid>
@@ -85,17 +85,17 @@ const FoldingDorCabinet = () => {
 
       <Grid container gap={2} className='container'>
         <Input
-          TitleText={"Shelf pieces"}
+          TitleText={"Hillu fjöldi"}
           size={2}
           valueVariable={[cabinetValues.shelf_count, update, "shelf_count"]}
         />
         <Input
-          TitleText={"Shelf color"}
+          TitleText={"Hillu litur"}
           size={3}
           valueVariable={[cabinetValues.shelf_color, update, "shelf_color"]}
         />
         <Input
-          TitleText={"Shelf depth"}
+          TitleText={"Hillu dýpt"}
           size={3}
           type='number'
           valueVariable={[cabinetValues.shelf_depth, update, "shelf_depth"]}
@@ -103,13 +103,13 @@ const FoldingDorCabinet = () => {
       </Grid>
 
       <Grid container gap={4} pt={2} className='container'>
-        <CheckBox TitleText={"Light on the shelf"} />
-        <CheckBox TitleText={"Shelf material from Nobila"} />
-        <CheckBox TitleText={"Shelves ordered in correct dimension"} />
+        <CheckBox TitleText={"Ljós í hillu"} />
+        <CheckBox TitleText={"Hillu kemur frá Nobila"} />
+        <CheckBox TitleText={"Hillur ekki pantaðar í réttri stærð"} />
       </Grid>
 
       <Grid container gap={4} mt={1} className='container'>
-        <Input TitleText={"Notice"} size={8} pt={2} />
+        <Input TitleText={"Athugasemd"} size={8} pt={2} />
       </Grid>
 
       <Grid container gap={4} mt={6} className='container'>
@@ -117,24 +117,23 @@ const FoldingDorCabinet = () => {
           values={[2, 4]}
           update={update}
           changeLabel='door_count'
-          label='Door pieces'
+          label='Hurða fjöldi'
           size={4}
         />
         <Input
-          TitleText={"Door color"}
+          TitleText={"Hurða litur"}
           size={4}
           valueVariable={[cabinetValues.door_color, update, "door_color"]}
         />
       </Grid>
 
       <Grid container gap={4} pt={2} className='container'>
-        <CheckBox TitleText={"Doors from Nobilia"} />
-        <CheckBox TitleText={"Doors need cut in GKS"} />
-        <CheckBox TitleText={"Doors ordered in correct dimension"} />
+        <CheckBox TitleText={"Hurðir koma frá Nobilia"} />
+        <CheckBox TitleText={"Hurðir ekki pantaðar í réttri stærð"} />
       </Grid>
 
       <Grid container mt={1} mb={4} className='container'>
-        <Input TitleText={"Notice"} size={8} pt={2} />
+        <Input TitleText={"Athugasemd"} size={8} pt={2} />
       </Grid>
 
       <Grid container mb={8} mt={16}>
