@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react";
+import {useState} from "react";
 
 const useFoldingDorCabinet = () => {
   const [cabinet, setCabinet] = useState({
@@ -16,18 +16,18 @@ const useFoldingDorCabinet = () => {
     customer: "",
     seller: "",
     carcase_nobilia: false,
+    carcase_change_gks: false,
     self_nobila: false,
+    self_change_gks: false,
     doors_nobila: false,
+    doors_change_gks: false,
+    light_Shelf: false,
   });
 
-  useEffect(() => {
-    console.log(cabinet);
-  }, [cabinet]);
-
-  const update = (e, type) => {
+  const update = (e, type, target) => {
     e.preventDefault();
     console.log(e.targe);
-    setCabinet({...cabinet, [`${type}`]: e.target.value});
+    setCabinet({...cabinet, [`${type}`]: e.target[`${target}`]});
   };
 
   return {

@@ -15,7 +15,7 @@ const Input = ({
       <TextField
         onChange={
           valueVariable !== null
-            ? (e) => valueVariable[1](e, valueVariable[2])
+            ? (e) => valueVariable[1](e, valueVariable[2], "value")
             : null
         }
         id='standard-basic'

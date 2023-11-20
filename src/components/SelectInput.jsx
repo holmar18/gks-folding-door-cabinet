@@ -10,7 +10,7 @@ const SelectInput = ({values, update, changeLabel, label, size = 12}) => {
           labelId='demo-simple-select-standard-label'
           id='demo-simple-select-standard'
           label={label}
-          onChange={(e) => update(e, changeLabel)}>
+          onChange={(e) => update(e, changeLabel, "value")}>
           {values.map((ele) => {
             return <MenuItem value={ele}>{ele}</MenuItem>;
           })}

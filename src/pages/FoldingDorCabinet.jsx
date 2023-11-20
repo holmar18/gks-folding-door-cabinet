@@ -75,8 +75,16 @@ const FoldingDorCabinet = () => {
             TitleText={"Kantlíming litur"}
             valueVariable={[cabinetValues.edge_color, update, "edge_color"]}
           />
-          <CheckBox TitleText={"Inmatur kemur frá Nobilia"} />
-          <CheckBox TitleText={"Þarf að breyta hjá GKS"} mt={0} />
+          <CheckBox
+            TitleText={"Inmatur kemur frá Nobilia"}
+            update={update}
+            changeLabel='carcase_nobilia'
+          />
+          <CheckBox
+            TitleText={"Þarf að breyta hjá GKS"}
+            mt={0}
+            isDisabled={!cabinetValues.carcase_nobilia}
+          />
         </Grid>
       </Grid>
 
@@ -101,8 +109,15 @@ const FoldingDorCabinet = () => {
 
       <Grid container gap={4} pt={2} className='container'>
         <CheckBox TitleText={"Ljós í hillu"} />
-        <CheckBox TitleText={"Hillur kemur frá Nobila"} />
-        <CheckBox TitleText={"Þarf að breyta hjá GKS"} />
+        <CheckBox
+          TitleText={"Hillur kemur frá Nobila"}
+          update={update}
+          changeLabel='self_nobila'
+        />
+        <CheckBox
+          TitleText={"Þarf að breyta hjá GKS"}
+          isDisabled={!cabinetValues.self_nobila}
+        />
       </Grid>
 
       <Grid container gap={4} mt={1} className='container'>
@@ -125,8 +140,15 @@ const FoldingDorCabinet = () => {
       </Grid>
 
       <Grid container gap={4} pt={2} className='container'>
-        <CheckBox TitleText={"Hurðir koma frá Nobilia"} />
-        <CheckBox TitleText={"Þarf að breyta hjá GKS"} />
+        <CheckBox
+          TitleText={"Hurðir koma frá Nobilia"}
+          update={update}
+          changeLabel='doors_nobila'
+        />
+        <CheckBox
+          TitleText={"Þarf að breyta hjá GKS"}
+          isDisabled={!cabinetValues.doors_nobila}
+        />
       </Grid>
 
       <Grid container mt={1} mb={4} className='container'>
