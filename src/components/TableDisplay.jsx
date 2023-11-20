@@ -57,77 +57,88 @@ const TableDisplay = ({cv}) => {
     ),
     createData(
       "Hillur",
-      cv.carcase_color,
+      cv.shelf_color,
       cv.width - cv.thickness * 2,
       cv.shelf_depth,
-      cv.thickness,
+      "25-32",
       cv.shelf_count,
       cv.edge_color,
-      hurdar
+      hillur
     ),
     createData(
       "Hurðar",
-      cv.carcase_color,
+      cv.door_color,
       cv.height - 5,
       cv.door_count === 2 ? cv.width / 2 - 8 : cv.width / 4 - 16,
-      "no affect",
+      "19-22",
       cv.door_count,
       cv.edge_color,
-      hillur
+      hurdar
     ),
   ];
 
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{minWidth: 700}} aria-label='customized table'>
-        <TableHead>
-          <TableRow>
-            <TableCell>
-              <b>Hlut nr.</b>
-            </TableCell>
-            <TableCell align='right'>
-              <b>Efni</b>
-            </TableCell>
-            <TableCell align='right'>
-              <b>Lengd</b>
-            </TableCell>
-            <TableCell align='right'>
-              <b>Breidd</b>
-            </TableCell>
-            <TableCell align='right'>
-              <b>Þykkt</b>
-            </TableCell>
-            <TableCell align='right'>
-              <b>Magn</b>
-            </TableCell>
-            <TableCell align='right'>
-              <b>Efni kant.</b>
-            </TableCell>
-            <TableCell align='right'>
-              <b>Kantlíming</b>
-            </TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.hlutur}>
-              <TableCell component='th' scope='row'>
-                {row.hlutur}
+    <>
+      <span
+        style={{
+          padding: "0.4rem",
+        }}>
+        <b>Customer: {cv.customer}</b>
+      </span>
+      <TableContainer component={Paper}>
+        <Table sx={{minWidth: 700}} aria-label='customized table'>
+          <TableHead>
+            <TableRow>
+              <TableCell>
+                <b>Hlut nr.</b>
               </TableCell>
-              <TableCell align='right'>{row.efni}</TableCell>
-              <TableCell align='right'>{row.l < 0 ? 0 : row.l}</TableCell>
-              <TableCell align='right'>{row.b < 0 ? 0 : row.b}</TableCell>
-              <TableCell align='right'>{row.þ < 0 ? 0 : row.þ}</TableCell>
-              <TableCell align='right'>{row.magn}</TableCell>
-              <TableCell align='right'>{row.efni_kant}</TableCell>
               <TableCell align='right'>
-                <img src={row.kantliming} alt='liming' />
+                <b>Efni</b>
+              </TableCell>
+              <TableCell align='right'>
+                <b>Lengd</b>
+              </TableCell>
+              <TableCell align='right'>
+                <b>Breidd</b>
+              </TableCell>
+              <TableCell align='right'>
+                <b>Þykkt</b>
+              </TableCell>
+              <TableCell align='right'>
+                <b>Magn</b>
+              </TableCell>
+              <TableCell align='right'>
+                <b>Efni kant.</b>
+              </TableCell>
+              <TableCell align='right'>
+                <b>Kantlíming</b>
               </TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+          </TableHead>
+          <TableBody>
+            {rows.map((row) => (
+              <TableRow key={row.hlutur}>
+                <TableCell component='th' scope='row'>
+                  {row.hlutur}
+                </TableCell>
+                <TableCell align='right'>{row.efni}</TableCell>
+                <TableCell align='right'>{row.l < 0 ? 0 : row.l}</TableCell>
+                <TableCell align='right'>{row.b < 0 ? 0 : row.b}</TableCell>
+                <TableCell align='right'>{row.þ < 0 ? 0 : row.þ}</TableCell>
+                <TableCell align='right'>{row.magn}</TableCell>
+                <TableCell align='right'>{row.efni_kant}</TableCell>
+                <TableCell align='right'>
+                  <img src={row.kantliming} alt='liming' />
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+      <span style={{marginLeft: "auto", minWidth: "10rem", padding: "0.4rem"}}>
+        <b>Seller: {cv.seller}</b>
+      </span>
+    </>
   );
 };
 

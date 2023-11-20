@@ -10,7 +10,6 @@ const Input = ({
   value = null,
   autoComplete = null,
 }) => {
-  console.log(valueVariable);
   return (
     <Grid item xs={size} mt={2}>
       <TextField

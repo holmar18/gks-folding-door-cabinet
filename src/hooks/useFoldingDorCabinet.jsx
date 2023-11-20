@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react";
+import {useState} from "react";
 
 const useFoldingDorCabinet = () => {
   const [cabinet, setCabinet] = useState({
@@ -7,15 +7,15 @@ const useFoldingDorCabinet = () => {
     depth: 0,
     carcase_color: "",
     edge_color: "",
+    self_color: "",
+    door_color: "",
     shelf_count: 0,
     shelf_depth: 0,
     door_count: 0,
     thickness: 0,
+    customer: "",
+    seller: "",
   });
-
-  useEffect(() => {
-    console.log(cabinet);
-  }, [cabinet]);
 
   const update = (e, type) => {
     e.preventDefault();

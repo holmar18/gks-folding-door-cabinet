@@ -23,8 +23,16 @@ const FoldingDorCabinet = () => {
       <h1>Folding Door Cabinet</h1>
       <Divider />
       <Grid container gap={4} pt={1} className='container'>
-        <Input TitleText={"Customer"} size={4} />
-        <Input TitleText={"Seller"} autoComplete={"nickname"} />
+        <Input
+          TitleText={"Customer"}
+          size={4}
+          valueVariable={[cabinetValues.customer, update, "customer"]}
+        />
+        <Input
+          TitleText={"Seller"}
+          autoComplete={"nickname"}
+          valueVariable={[cabinetValues.seller, update, "seller"]}
+        />
         <Input TitleText={"Date"} value={currentDate()} />
       </Grid>
 
@@ -81,7 +89,11 @@ const FoldingDorCabinet = () => {
           size={2}
           valueVariable={[cabinetValues.shelf_count, update, "shelf_count"]}
         />
-        <Input TitleText={"Shelf color"} size={3} />
+        <Input
+          TitleText={"Shelf color"}
+          size={3}
+          valueVariable={[cabinetValues.shelf_color, update, "shelf_color"]}
+        />
         <Input
           TitleText={"Shelf depth"}
           size={3}
@@ -108,7 +120,11 @@ const FoldingDorCabinet = () => {
           label='Door pieces'
           size={4}
         />
-        <Input TitleText={"Door color"} size={4} />
+        <Input
+          TitleText={"Door color"}
+          size={4}
+          valueVariable={[cabinetValues.door_color, update, "door_color"]}
+        />
       </Grid>
 
       <Grid container gap={4} pt={2} className='container'>
