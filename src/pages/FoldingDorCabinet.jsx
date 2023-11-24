@@ -84,7 +84,7 @@ const FoldingDorCabinet = () => {
             changeLabel={"edge_color"}
           />
           <CheckBox
-            TitleText={"Inmatur kemur frá Nobilia"}
+            TitleText={"Innmatur kemur frá Nobilia"}
             update={update}
             changeLabel='carcase_nobilia'
           />
@@ -121,7 +121,7 @@ const FoldingDorCabinet = () => {
       <Grid container gap={4} pt={2} className='container'>
         <CheckBox TitleText={"Ljós í hillu"} />
         <CheckBox
-          TitleText={"Hillur kemur frá Nobila"}
+          TitleText={"Hillur koma frá Nobila"}
           update={update}
           changeLabel='self_nobila'
         />
