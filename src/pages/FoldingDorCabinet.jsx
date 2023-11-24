@@ -7,19 +7,23 @@ import SelectInput from "../components/SelectInput";
 // Material UI
 import Grid from "@mui/material/Grid";
 import Divider from "@mui/material/Divider";
+import Container from "@mui/material/Container";
+import Button from "@mui/material/Button";
 // Images
-import cabinet from "../assets/images/skapur.svg";
+import cabinet from "../assets/images/skapur.png";
 import TableDisplay from "../components/TableDisplay";
 // Utils
 import currentDate from "../utils/currentDate";
 // Hooks
 import useFoldingDorCabinet from "../hooks/useFoldingDorCabinet";
+import useSaveAsPdf from "../hooks/useSaveAsPdf";
 
 const FoldingDorCabinet = () => {
   const {cabinetValues, update} = useFoldingDorCabinet();
+  const {pdfTemplateRef, handleGeneratePdf} = useSaveAsPdf();
 
   return (
-    <>
+    <Container ref={pdfTemplateRef}>
       <h1>Tækjaskápur</h1>
       <Divider />
       <Grid container gap={4} pt={1} className='container'>
@@ -38,7 +42,7 @@ const FoldingDorCabinet = () => {
 
       <Grid container gap={4} pt={4} className='container'>
         <Grid item xs={4} m={4} className='container'>
-          <img src={cabinet} alt='cabinet' />
+          <img src={cabinet} alt='cabinet' height={200} width={100} />
         </Grid>
 
         <Grid item xs={4} gap={4}>
@@ -158,7 +162,10 @@ const FoldingDorCabinet = () => {
       <Grid container mb={8} mt={16}>
         <TableDisplay cv={cabinetValues} />
       </Grid>
-    </>
+      <Button variant='outlined' onClick={handleGeneratePdf}>
+        Vista PDF
+      </Button>
+    </Container>
   );
 };
 
