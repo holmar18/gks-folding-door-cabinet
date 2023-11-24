@@ -6,24 +6,23 @@ const Input = ({
   TitleText,
   size,
   type = "text",
-  valueVariable = null,
-  value = null,
+  defaultValue = null,
   autoComplete = null,
+  update = null,
+  changeLabel = "",
 }) => {
   return (
     <Grid item xs={size} mt={2}>
       <TextField
         onChange={
-          valueVariable !== null
-            ? (e) => valueVariable[1](e, valueVariable[2], "value")
-            : null
+          update !== null ? (e) => update(e, changeLabel, "value") : null
         }
         id='standard-basic'
         label={TitleText}
         variant='standard'
         fullWidth={true}
         type={type}
-        defaultValue={value ? value : ""}
+        defaultValue={defaultValue ? defaultValue : ""}
         autoComplete={autoComplete}
       />
     </Grid>

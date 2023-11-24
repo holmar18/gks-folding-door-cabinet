@@ -14,12 +14,13 @@ import cabinet from "../assets/images/skapur.png";
 import TableDisplay from "../components/TableDisplay";
 // Utils
 import currentDate from "../utils/currentDate";
+import FdcTabelData from "../utils/foldingDoorCabinetCalculation";
 // Hooks
 import useFoldingDorCabinet from "../hooks/useFoldingDorCabinet";
 import useSaveAsPdf from "../hooks/useSaveAsPdf";
 
 const FoldingDorCabinet = () => {
-  const {cabinetValues, update} = useFoldingDorCabinet();
+  const {cabinetValues, update, clear} = useFoldingDorCabinet();
   const {pdfTemplateRef, handleGeneratePdf} = useSaveAsPdf();
 
   return (
@@ -30,36 +31,41 @@ const FoldingDorCabinet = () => {
         <Input
           TitleText={"Viðskiptavinur"}
           size={4}
-          valueVariable={[cabinetValues.customer, update, "customer"]}
+          update={update}
+          changeLabel={"customer"}
         />
         <Input
           TitleText={"Sölumaður"}
           autoComplete={"nickname"}
-          valueVariable={[cabinetValues.seller, update, "seller"]}
+          update={update}
+          changeLabel={"seller"}
         />
-        <Input TitleText={"Date"} value={currentDate()} />
+        <Input TitleText={"Date"} defaultValue={currentDate()} />
       </Grid>
 
       <Grid container gap={4} pt={4} className='container'>
         <Grid item xs={4} m={4} className='container'>
-          <img src={cabinet} alt='cabinet' height={200} width={100} />
+          <img src={cabinet} alt='cabinet' />
         </Grid>
 
         <Grid item xs={4} gap={4}>
           <Input
             TitleText={"Breidd"}
             type='number'
-            valueVariable={[cabinetValues.width, update, "width"]}
+            update={update}
+            changeLabel={"width"}
           />
           <Input
             TitleText={"Hæð"}
             type='number'
-            valueVariable={[cabinetValues.height, update, "height"]}
+            update={update}
+            changeLabel={"height"}
           />
           <Input
             TitleText={"Dýpt"}
             type='number'
-            valueVariable={[cabinetValues.depth, update, "depth"]}
+            update={update}
+            changeLabel={"depth"}
           />
           <SelectInput
             values={[16, 19]}
@@ -69,15 +75,13 @@ const FoldingDorCabinet = () => {
           />
           <Input
             TitleText={"Innmatur litur"}
-            valueVariable={[
-              cabinetValues.carcase_color,
-              update,
-              "carcase_color",
-            ]}
+            update={update}
+            changeLabel={"carcase_color"}
           />
           <Input
             TitleText={"Kantlíming litur"}
-            valueVariable={[cabinetValues.edge_color, update, "edge_color"]}
+            update={update}
+            changeLabel={"edge_color"}
           />
           <CheckBox
             TitleText={"Inmatur kemur frá Nobilia"}
@@ -96,18 +100,21 @@ const FoldingDorCabinet = () => {
         <Input
           TitleText={"Hillu fjöldi"}
           size={2}
-          valueVariable={[cabinetValues.shelf_count, update, "shelf_count"]}
+          update={update}
+          changeLabel={"shelf_count"}
         />
         <Input
           TitleText={"Hillu litur"}
           size={3}
-          valueVariable={[cabinetValues.shelf_color, update, "shelf_color"]}
+          update={update}
+          changeLabel={"shelf_color"}
         />
         <Input
           TitleText={"Hillu dýpt"}
           size={3}
+          update={update}
+          changeLabel={"shelf_depth"}
           type='number'
-          valueVariable={[cabinetValues.shelf_depth, update, "shelf_depth"]}
         />
       </Grid>
 
@@ -139,7 +146,8 @@ const FoldingDorCabinet = () => {
         <Input
           TitleText={"Hurða litur"}
           size={4}
-          valueVariable={[cabinetValues.door_color, update, "door_color"]}
+          update={update}
+          changeLabel='door_color'
         />
       </Grid>
 
@@ -160,11 +168,32 @@ const FoldingDorCabinet = () => {
       </Grid>
 
       <Grid container mb={8} mt={16}>
-        <TableDisplay cv={cabinetValues} />
+        <TableDisplay
+          cv={cabinetValues}
+          tableRows={FdcTabelData(cabinetValues)}
+        />
       </Grid>
-      <Button variant='outlined' onClick={handleGeneratePdf}>
-        Vista PDF
-      </Button>
+
+      <Grid container spacing={2} columns={16} mb={5}>
+        <Grid item xs={14}>
+          <Button
+            variant='outlined'
+            onClick={() =>
+              handleGeneratePdf(
+                cabinetValues.seller,
+                cabinetValues.customer,
+                currentDate()
+              )
+            }>
+            Vista PDF
+          </Button>
+        </Grid>
+        <Grid item xs={2}>
+          <Button variant='outlined' onClick={clear}>
+            Hreinsa
+          </Button>
+        </Grid>
+      </Grid>
     </Container>
   );
 };

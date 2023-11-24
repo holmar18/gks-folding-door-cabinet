@@ -7,76 +7,12 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
-// Images
-import hlidar from "../assets/images/hlidar.svg";
-import bak from "../assets/images/bak.svg";
-import hillur from "../assets/images/hillur.svg";
-import hurdar from "../assets/images/hurdar.svg";
-import toppur from "../assets/images/toppur.svg";
-
 /*
   Height - Hæð = X
   Width - breidd = Y
   Depth - Dýpt = Z
 */
-const TableDisplay = ({cv}) => {
-  function createData(hlutur, efni, l, b, þ, magn, efni_kant, kantliming) {
-    return {hlutur, efni, l, b, þ, magn, efni_kant, kantliming};
-  }
-
-  const rows = [
-    createData(
-      "Hliðar",
-      cv.carcase_color,
-      cv.height,
-      cv.depth,
-      cv.thickness,
-      2,
-      cv.edge_color,
-      hlidar
-    ),
-    createData(
-      "Toppur",
-      cv.carcase_color,
-      cv.width - cv.thickness * 2,
-      cv.depth - cv.thickness - 2,
-      cv.thickness,
-      1,
-      cv.edge_color,
-      toppur
-    ),
-    createData(
-      "Bak",
-      cv.carcase_color,
-      cv.height,
-      cv.width - cv.thickness * 2,
-      cv.thickness,
-      1,
-      cv.edge_color,
-      bak
-    ),
-    createData(
-      "Hillur",
-      cv.shelf_color,
-      cv.width - cv.thickness * 2,
-      cv.shelf_depth,
-      "25-32",
-      cv.shelf_count,
-      cv.edge_color,
-      hillur
-    ),
-    createData(
-      "Hurðar",
-      cv.door_color,
-      cv.height - 5,
-      cv.door_count === 2 ? cv.width / 2 - 8 : cv.width / 4 - 16,
-      "19-22",
-      cv.door_count,
-      cv.edge_color,
-      hurdar
-    ),
-  ];
-
+const TableDisplay = ({cv, tableRows}) => {
   return (
     <>
       <span
@@ -116,7 +52,7 @@ const TableDisplay = ({cv}) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
+            {tableRows.map((row) => (
               <TableRow key={row.hlutur}>
                 <TableCell component='th' scope='row'>
                   {row.hlutur}
@@ -128,7 +64,12 @@ const TableDisplay = ({cv}) => {
                 <TableCell align='right'>{row.magn}</TableCell>
                 <TableCell align='right'>{row.efni_kant}</TableCell>
                 <TableCell align='right'>
-                  <img src={row.kantliming} alt='liming' />
+                  <img
+                    src={row.kantliming}
+                    alt='liming'
+                    height={50}
+                    width={140}
+                  />
                 </TableCell>
               </TableRow>
             ))}

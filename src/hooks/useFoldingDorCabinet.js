@@ -30,9 +30,15 @@ const useFoldingDorCabinet = () => {
     setCabinet({...cabinet, [`${type}`]: e.target[`${target}`]});
   };
 
+  const clearInputs = () => {
+    // Clear the inputs by refreshing since input values arent set as their value
+    window.location.reload(false);
+  };
+
   return {
     cabinetValues: cabinet,
     update: update,
+    clear: clearInputs,
   };
 };
 

@@ -5,20 +5,7 @@ import html2canvas from "html2canvas";
 const useSaveAsPdf = () => {
   const pdfTemplateRef = useRef(null);
 
-  const handleGeneratePdf = () => {
-    const doc = new jsPDF({
-      format: "a4",
-      unit: "px",
-    });
-
-    doc.html(pdfTemplateRef.current, {
-      async callback(doc) {
-        await doc.save("document");
-      },
-    });
-  };
-
-  const handleCanvasPdf = () => {
+  const handleCanvasPdf = (seller, customer, date) => {
     html2canvas(pdfTemplateRef.current).then((canvas) => {
       const imageData = canvas.toDataURL("image/png");
       const pdf = new jsPDF("p", "mm", "a4", true);
@@ -37,7 +24,7 @@ const useSaveAsPdf = () => {
         imgWidth * ratio,
         imgHeight * ratio
       );
-      pdf.save("document.pdf");
+      pdf.save(`${seller}-${date}-(${customer}).pdf`);
     });
   };
 
