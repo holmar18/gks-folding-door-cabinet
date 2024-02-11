@@ -246,12 +246,14 @@ const Doors = () => {
         </Grid>
       </Grid>
 
-      <Grid container mb={8} mt={16}>
-        <TableDisplay cv={cabinetValues} />
+      {/* <Grid container mb={8} mt={16}>
+        <TableDisplay cv={cabinetValues} /> 
+      </Grid> */}
+      <Grid container mb={8} mt={16} ml={12}>
+        <Button variant='outlined' onClick={handleGeneratePdf}>
+          Vista PDF
+        </Button>
       </Grid>
-      <Button variant='outlined' onClick={handleGeneratePdf}>
-        Vista PDF
-      </Button>
     </Container>
   );
 };
