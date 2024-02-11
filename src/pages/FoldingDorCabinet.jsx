@@ -1,5 +1,5 @@
 import React from "react";
-import "./FoldingDorCabinet.css";
+import "./main.css";
 // Components
 import Input from "../components/Input";
 import CheckBox from "../components/CheckBox";
@@ -42,7 +42,7 @@ const FoldingDorCabinet = () => {
 
       <Grid container gap={4} pt={4} className='container'>
         <Grid item xs={4} m={4} className='container'>
-          <img src={cabinet} alt='cabinet' height={200} width={100} />
+          <img src={cabinet} alt='cabinet' />
         </Grid>
 
         <Grid item xs={4} gap={4}>
