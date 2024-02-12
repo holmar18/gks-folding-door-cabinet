@@ -22,11 +22,12 @@ const useDoor = () => {
     gerreti: false,
     vinstri: false,
     haegri: false,
+    verk_nr: "",
+    nafn_hurdar: "",
   });
 
   const update = (e, type, target) => {
     e.preventDefault();
-    console.log(e.targe);
     setCabinet({...cabinet, [`${type}`]: e.target[`${target}`]});
   };
 

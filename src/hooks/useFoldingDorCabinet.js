@@ -26,7 +26,6 @@ const useFoldingDorCabinet = () => {
 
   const update = (e, type, target) => {
     e.preventDefault();
-    console.log(e.targe);
     setCabinet({...cabinet, [`${type}`]: e.target[`${target}`]});
   };
 

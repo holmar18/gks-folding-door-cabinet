@@ -1,9 +1,9 @@
 // Images
-import hlidar from "../assets/images/hlidar.png";
-import bak from "../assets/images/bak.png";
-import hillur from "../assets/images/hillur.png";
-import hurdar from "../assets/images/hurdar.png";
-import toppur from "../assets/images/toppur.png";
+import bak from "../assets/images/taekjaskapur/bak.png";
+import hillur from "../assets/images/taekjaskapur/hillur.png";
+import hlidar from "../assets/images/taekjaskapur/hlidar.png";
+import hurdar from "../assets/images/taekjaskapur/hurdar.png";
+import toppur from "../assets/images/taekjaskapur/toppur.png";
 
 function createData(hlutur, efni, l, b, þ, magn, efni_kant, kantliming) {
   return {hlutur, efni, l, b, þ, magn, efni_kant, kantliming};

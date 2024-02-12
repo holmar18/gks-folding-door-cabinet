@@ -1,23 +1,17 @@
-import "./main.css";
+import "./style.css";
 import React from "react";
 import Stack from "@mui/material/Stack";
-import Button from "@mui/material/Button";
-// pages
-import {Link} from "react-router-dom";
+// Components
+import CardPaper from "../components/CardPaper";
+// Images
+import basic from "../assets/images/hurd/basic.png";
+import cabinet from "../assets/images/taekjaskapur/skapur.png";
 
 const Main = () => {
   return (
     <Stack direction='row' spacing={2} className='main-container'>
-      <Link to='/fdc'>
-        <Button variant='outlined' size='large'>
-          Tækjaskápur
-        </Button>
-      </Link>
-      <Link to='/doors'>
-        <Button variant='outlined' size='large'>
-          Hurðar
-        </Button>
-      </Link>
+      <CardPaper btnText={"Tækjaskápur"} imageSrc={cabinet} link={"/fdc"} />
+      <CardPaper btnText={"Hurðar"} imageSrc={basic} link={"/doors"} />
     </Stack>
   );
 };

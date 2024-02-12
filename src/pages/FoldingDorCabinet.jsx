@@ -1,5 +1,5 @@
 import React from "react";
-import "./main.css";
+import "./style.css";
 // Components
 import Input from "../components/Input";
 import CheckBox from "../components/CheckBox";
@@ -10,7 +10,7 @@ import Divider from "@mui/material/Divider";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 // Images
-import cabinet from "../assets/images/skapur.png";
+import cabinet from "../assets/images/taekjaskapur/skapur.png";
 import TableDisplay from "../components/TableDisplay";
 // Utils
 import currentDate from "../utils/currentDate";
@@ -26,6 +26,7 @@ const FoldingDorCabinet = () => {
   return (
     <Container ref={pdfTemplateRef}>
       <h1>Tækjaskápur</h1>
+
       <Divider />
       <Grid container gap={4} pt={1} className='container'>
         <Input

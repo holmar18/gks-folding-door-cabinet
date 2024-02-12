@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import "./main.css";
+import "./style.css";
 // Components
 import Input from "../components/Input";
 import CheckBox from "../components/CheckBox";
@@ -10,7 +10,6 @@ import Divider from "@mui/material/Divider";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 // Images
-import TableDisplay from "../components/TableDisplay";
 import basic from "../assets/images/hurd/basic.png";
 import breidd from "../assets/images/hurd/breidd.png";
 import haed from "../assets/images/hurd/haed.png";
@@ -33,7 +32,6 @@ const Doors = () => {
   const [currImgSrc, setCurrImgSrc] = useState(basic);
 
   useEffect(() => {
-    console.log(cabinetValues);
     if (imgBreiddFocus) {
       setCurrImgSrc(breidd);
     } else if (imgHaedFocus) {
@@ -51,7 +49,19 @@ const Doors = () => {
 
   return (
     <Container ref={pdfTemplateRef}>
-      <h1>Hurð</h1>
+      <Grid container>
+        <Grid item xs={8}>
+          <h1>Hurð</h1>
+        </Grid>
+        <Grid container xs={4} flex={1} justifyContent='flex-end'>
+          <Input
+            TitleText={"Verk númer"}
+            size={8}
+            update={update}
+            changeLabel={"verk_nr"}
+          />
+        </Grid>
+      </Grid>
       <Divider />
       <Grid container gap={4} pt={1} className='container'>
         <Input
@@ -73,6 +83,12 @@ const Doors = () => {
         </Grid>
 
         <Grid item xs={4} gap={4}>
+          <Input
+            TitleText={"Nafn hurðar"}
+            valueVariable={[cabinetValues.nafn_hurdar, update, "nafn_hurdar"]}
+            onBlur={setImgHaedFocus}
+            onFocus={setImgHaedFocus}
+          />
           <Input
             TitleText={"Hæð"}
             type='number'
@@ -127,6 +143,7 @@ const Doors = () => {
                 TitleText={"Vinstri"}
                 update={update}
                 changeLabel='vinstri'
+                isDisabled={cabinetValues.haegri}
               />
             </Grid>
             <Grid item xs={4}>
@@ -134,6 +151,7 @@ const Doors = () => {
                 TitleText={"Hægri"}
                 update={update}
                 changeLabel='haegri'
+                isDisabled={cabinetValues.vinstri}
               />
             </Grid>
           </Grid>
@@ -214,7 +232,7 @@ const Doors = () => {
               label='Skrá'
             />
             <SelectInput
-              values={["Test 1", "Test 2"]}
+              values={["Innval", "Gks listi"]}
               update={update}
               changeLabel='slaglisti'
               label='Slaglisti'
@@ -224,8 +242,11 @@ const Doors = () => {
       </Grid>
 
       <Grid container mt={1} mb={4} paddingTop={7} paddingLeft={14}>
-        <Grid item xs={8}>
-          <p>Kemur texti síðar....</p>
+        <Grid item xs={8} paddingRight={16}>
+          <p style={{paddingBottom: "16px"}}>
+            Ekki er unnt að gera breytingar á málum eftir að smíði er hafin.
+            Undirritaður/-uð staðfestir að ofangreind mál séu rétt.
+          </p>
           <Input TitleText={""} size={8} pt={2} />
         </Grid>
         <Grid item xs={4}>
