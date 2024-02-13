@@ -13,10 +13,10 @@ export default function CardPaper({imageSrc, btnText, link}) {
         <CardActionArea>
           <CardMedia
             component='img'
-            height='240'
+            height='200'
             image={imageSrc}
             alt='green iguana'
-            style={{objectFit: "contain"}}
+            style={{objectFit: "cover"}}
           />
           <CardContent>
             <Typography

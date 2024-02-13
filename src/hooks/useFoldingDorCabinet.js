@@ -21,6 +21,7 @@ const values = {
   doors_nobila: false,
   doors_change_gks: false,
   light_Shelf: false,
+  Athugasemd: "",
 };
 
 const useFoldingDorCabinet = () => {

@@ -5,7 +5,7 @@ import Stack from "@mui/material/Stack";
 import CardPaper from "../components/CardPaper";
 // Images
 import basic from "../assets/images/hurd/basic.png";
-import cabinet from "../assets/images/taekjaskapur/skapur.png";
+import cabinet from "../assets/images/taekjaskapur/4doors.png";
 
 const Main = () => {
   return (

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import "./style.css";
 // Components
 import Input from "../components/Input";
@@ -11,6 +11,12 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 // Images
 import cabinet from "../assets/images/taekjaskapur/skapur.png";
+import doors2 from "../assets/images/taekjaskapur/2doors.png";
+import doors4 from "../assets/images/taekjaskapur/4doors.png";
+import shelf1 from "../assets/images/taekjaskapur/fdc1.png";
+import shelf2 from "../assets/images/taekjaskapur/fdc2.png";
+import shelf3 from "../assets/images/taekjaskapur/fdc3.png";
+// Components
 import TableDisplay from "../components/TableDisplay";
 // Utils
 import currentDate from "../utils/currentDate";
@@ -22,6 +28,23 @@ import useSaveAsPdf from "../hooks/useSaveAsPdf";
 const FoldingDorCabinet = () => {
   const {cabinetValues, update, clear} = useFoldingDorCabinet();
   const {pdfTemplateRef, handleGeneratePdf} = useSaveAsPdf();
+  const [img, setImg] = useState(doors4);
+
+  useEffect(() => {
+    if (cabinetValues.door_count === 2) {
+      setImg(doors2);
+    } else if (cabinetValues.door_count === 4) {
+      setImg(doors4);
+    } else if (cabinetValues.shelf_count === "3") {
+      setImg(shelf3);
+    } else if (cabinetValues.shelf_count === "2") {
+      setImg(shelf2);
+    } else if (cabinetValues.shelf_count === "1") {
+      setImg(shelf1);
+    } else {
+      setImg(doors2);
+    }
+  }, [cabinetValues]);
 
   return (
     <Container ref={pdfTemplateRef}>
@@ -43,7 +66,7 @@ const FoldingDorCabinet = () => {
 
       <Grid container gap={4} pt={4} className='container'>
         <Grid item xs={4} m={4} className='container'>
-          <img src={cabinet} alt='cabinet' />
+          <img src={img} alt='cabinet' />
         </Grid>
 
         <Grid item xs={4} gap={4}>
@@ -97,6 +120,7 @@ const FoldingDorCabinet = () => {
         <Input
           TitleText={"Hillu fjöldi"}
           size={2}
+          type='number'
           valueVariable={[cabinetValues.shelf_count, update, "shelf_count"]}
         />
         <Input
