@@ -26,7 +26,6 @@ const FoldingDorCabinet = () => {
   return (
     <Container ref={pdfTemplateRef}>
       <h1>Tækjaskápur</h1>
-
       <Divider />
       <Grid container gap={4} pt={1} className='container'>
         <Input
@@ -37,11 +36,9 @@ const FoldingDorCabinet = () => {
         />
         <Input
           TitleText={"Sölumaður"}
-          autoComplete={"nickname"}
-          update={update}
-          changeLabel={"seller"}
+          valueVariable={[cabinetValues.seller, update, "seller"]}
         />
-        <Input TitleText={"Date"} defaultValue={currentDate()} />
+        <Input TitleText={"Date"} value={currentDate()} />
       </Grid>
 
       <Grid container gap={4} pt={4} className='container'>
@@ -53,20 +50,17 @@ const FoldingDorCabinet = () => {
           <Input
             TitleText={"Breidd"}
             type='number'
-            update={update}
-            changeLabel={"width"}
+            valueVariable={[cabinetValues.width, update, "width"]}
           />
           <Input
             TitleText={"Hæð"}
             type='number'
-            update={update}
-            changeLabel={"height"}
+            valueVariable={[cabinetValues.height, update, "height"]}
           />
           <Input
             TitleText={"Dýpt"}
             type='number'
-            update={update}
-            changeLabel={"depth"}
+            valueVariable={[cabinetValues.depth, update, "depth"]}
           />
           <SelectInput
             values={[16, 19]}
@@ -76,13 +70,15 @@ const FoldingDorCabinet = () => {
           />
           <Input
             TitleText={"Innmatur litur"}
-            update={update}
-            changeLabel={"carcase_color"}
+            valueVariable={[
+              cabinetValues.carcase_color,
+              update,
+              "carcase_color",
+            ]}
           />
           <Input
             TitleText={"Kantlíming litur"}
-            update={update}
-            changeLabel={"edge_color"}
+            valueVariable={[cabinetValues.edge_color, update, "edge_color"]}
           />
           <CheckBox
             TitleText={"Innmatur kemur frá Nobilia"}
@@ -101,21 +97,18 @@ const FoldingDorCabinet = () => {
         <Input
           TitleText={"Hillu fjöldi"}
           size={2}
-          update={update}
-          changeLabel={"shelf_count"}
+          valueVariable={[cabinetValues.shelf_count, update, "shelf_count"]}
         />
         <Input
           TitleText={"Hillu litur"}
           size={3}
-          update={update}
-          changeLabel={"shelf_color"}
+          valueVariable={[cabinetValues.shelf_color, update, "shelf_color"]}
         />
         <Input
           TitleText={"Hillu dýpt"}
           size={3}
-          update={update}
-          changeLabel={"shelf_depth"}
           type='number'
+          valueVariable={[cabinetValues.shelf_depth, update, "shelf_depth"]}
         />
       </Grid>
 
@@ -147,8 +140,7 @@ const FoldingDorCabinet = () => {
         <Input
           TitleText={"Hurða litur"}
           size={4}
-          update={update}
-          changeLabel='door_color'
+          valueVariable={[cabinetValues.door_color, update, "door_color"]}
         />
       </Grid>
 
