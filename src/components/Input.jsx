@@ -29,6 +29,7 @@ const Input = ({
         variant={variant}
         fullWidth={true}
         type={type}
+        value={value}
         defaultValue={value ? value : ""}
         autoComplete={autoComplete}
         multiline={multiline}

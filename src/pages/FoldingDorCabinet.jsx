@@ -31,6 +31,7 @@ const FoldingDorCabinet = () => {
   const [img, setImg] = useState(doors4);
 
   useEffect(() => {
+    console.log(cabinetValues);
     if (cabinetValues.door_count === 2) {
       setImg(doors2);
     } else if (cabinetValues.door_count === 4) {
@@ -54,11 +55,12 @@ const FoldingDorCabinet = () => {
         <Input
           TitleText={"Viðskiptavinur"}
           size={4}
-          update={update}
-          changeLabel={"customer"}
+          value={cabinetValues.customer}
+          valueVariable={[cabinetValues.customer, update, "customer"]}
         />
         <Input
           TitleText={"Sölumaður"}
+          value={cabinetValues.seller}
           valueVariable={[cabinetValues.seller, update, "seller"]}
         />
         <Input TitleText={"Date"} value={currentDate()} />
@@ -73,16 +75,19 @@ const FoldingDorCabinet = () => {
           <Input
             TitleText={"Breidd"}
             type='number'
+            value={cabinetValues.width}
             valueVariable={[cabinetValues.width, update, "width"]}
           />
           <Input
             TitleText={"Hæð"}
             type='number'
+            value={cabinetValues.height}
             valueVariable={[cabinetValues.height, update, "height"]}
           />
           <Input
             TitleText={"Dýpt"}
             type='number'
+            value={cabinetValues.depth}
             valueVariable={[cabinetValues.depth, update, "depth"]}
           />
           <SelectInput
@@ -90,9 +95,11 @@ const FoldingDorCabinet = () => {
             update={update}
             changeLabel='thickness'
             label='Þykkt'
+            value={cabinetValues.thickness}
           />
           <Input
             TitleText={"Innmatur litur"}
+            value={cabinetValues.carcase_color}
             valueVariable={[
               cabinetValues.carcase_color,
               update,
@@ -101,17 +108,22 @@ const FoldingDorCabinet = () => {
           />
           <Input
             TitleText={"Kantlíming litur"}
+            value={cabinetValues.edge_color}
             valueVariable={[cabinetValues.edge_color, update, "edge_color"]}
           />
           <CheckBox
             TitleText={"Innmatur kemur frá Nobilia"}
             update={update}
             changeLabel='carcase_nobilia'
+            value={cabinetValues.carcase_nobilia}
           />
           <CheckBox
             TitleText={"Þarf að breyta hjá GKS"}
+            update={update}
             mt={0}
             isDisabled={!cabinetValues.carcase_nobilia}
+            changeLabel='carcase_change_gks'
+            value={cabinetValues.carcase_change_gks}
           />
         </Grid>
       </Grid>
@@ -121,40 +133,59 @@ const FoldingDorCabinet = () => {
           TitleText={"Hillu fjöldi"}
           size={2}
           type='number'
+          value={cabinetValues.shelf_count}
           valueVariable={[cabinetValues.shelf_count, update, "shelf_count"]}
         />
         <Input
           TitleText={"Hillu litur"}
           size={3}
+          value={cabinetValues.shelf_color}
           valueVariable={[cabinetValues.shelf_color, update, "shelf_color"]}
         />
         <Input
           TitleText={"Hillu dýpt"}
           size={3}
           type='number'
+          value={cabinetValues.shelf_depth}
           valueVariable={[cabinetValues.shelf_depth, update, "shelf_depth"]}
         />
       </Grid>
 
       <Grid container gap={4} pt={2} className='container'>
-        <CheckBox TitleText={"Ljós í hillu"} />
+        <CheckBox
+          TitleText={"Ljós í hillu"}
+          update={update}
+          changeLabel='light_Shelf'
+          value={cabinetValues.light_Shelf}
+        />
         <CheckBox
           TitleText={"Hillur koma frá Nobila"}
           update={update}
           changeLabel='self_nobila'
+          value={cabinetValues.self_nobila}
         />
         <CheckBox
           TitleText={"Þarf að breyta hjá GKS"}
           isDisabled={!cabinetValues.self_nobila}
+          update={update}
+          changeLabel='self_change_gks'
+          value={cabinetValues.self_change_gks}
         />
       </Grid>
 
       <Grid container gap={4} mt={1} className='container'>
-        <Input TitleText={"Athugasemd"} size={8} pt={2} />
+        <Input
+          TitleText={"Athugasemd1"}
+          size={8}
+          pt={2}
+          value={cabinetValues.Athugasemd1}
+          valueVariable={[cabinetValues.Athugasemd1, update, "Athugasemd1"]}
+        />
       </Grid>
 
       <Grid container gap={4} mt={6} className='container'>
         <SelectInput
+          value={cabinetValues.door_count}
           values={[2, 4]}
           update={update}
           changeLabel='door_count'
@@ -164,6 +195,7 @@ const FoldingDorCabinet = () => {
         <Input
           TitleText={"Hurða litur"}
           size={4}
+          value={cabinetValues.door_color}
           valueVariable={[cabinetValues.door_color, update, "door_color"]}
         />
       </Grid>
@@ -173,15 +205,25 @@ const FoldingDorCabinet = () => {
           TitleText={"Hurðir koma frá Nobilia"}
           update={update}
           changeLabel='doors_nobila'
+          value={cabinetValues.doors_nobila}
         />
         <CheckBox
           TitleText={"Þarf að breyta hjá GKS"}
           isDisabled={!cabinetValues.doors_nobila}
+          update={update}
+          changeLabel='doors_change_gks'
+          value={cabinetValues.doors_change_gks}
         />
       </Grid>
 
       <Grid container mt={1} mb={4} className='container'>
-        <Input TitleText={"Athugasemd"} size={8} pt={2} />
+        <Input
+          TitleText={"Athugasemd2"}
+          size={8}
+          pt={2}
+          value={cabinetValues.Athugasemd2}
+          valueVariable={[cabinetValues.Athugasemd2, update, "Athugasemd2"]}
+        />
       </Grid>
 
       <Grid container mb={8} mt={16}>

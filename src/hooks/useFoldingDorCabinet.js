@@ -1,17 +1,17 @@
 import {useState} from "react";
 
 const values = {
-  width: 0,
-  height: 0,
-  depth: 0,
+  width: "",
+  height: "",
+  depth: "",
   carcase_color: "",
   edge_color: "",
-  self_color: "",
+  shelf_color: "",
   door_color: "",
-  shelf_count: 0,
-  shelf_depth: 0,
-  door_count: 0,
-  thickness: 0,
+  shelf_count: "",
+  shelf_depth: "",
+  door_count: "",
+  thickness: "",
   customer: "",
   seller: "",
   carcase_nobilia: false,
@@ -21,7 +21,8 @@ const values = {
   doors_nobila: false,
   doors_change_gks: false,
   light_Shelf: false,
-  Athugasemd: "",
+  Athugasemd1: "",
+  Athugasemd2: "",
 };
 
 const useFoldingDorCabinet = () => {

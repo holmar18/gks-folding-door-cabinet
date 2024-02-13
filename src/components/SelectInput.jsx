@@ -1,7 +1,14 @@
 import React from "react";
 import {FormControl, InputLabel, Select, MenuItem, Grid} from "@mui/material";
 
-const SelectInput = ({values, update, changeLabel, label, size = 12}) => {
+const SelectInput = ({
+  value = null,
+  values,
+  update,
+  changeLabel,
+  label,
+  size = 12,
+}) => {
   return (
     <Grid item xs={size} mt={2}>
       <FormControl fullWidth variant='standard'>
@@ -10,6 +17,7 @@ const SelectInput = ({values, update, changeLabel, label, size = 12}) => {
           labelId='demo-simple-select-standard-label'
           id='demo-simple-select-standard'
           label={label}
+          value={value}
           onChange={(e) => update(e, changeLabel, "value")}>
           {values.map((ele) => {
             return <MenuItem value={ele}>{ele}</MenuItem>;

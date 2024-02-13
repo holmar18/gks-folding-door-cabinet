@@ -10,13 +10,17 @@ const CheckBox = ({
   isDisabled = false,
   update = null,
   changeLabel = "",
+  value = undefined,
 }) => {
   return (
     <Grid item xs={size} mt={mt}>
       <FormControlLabel
         label={TitleText}
+        value={value}
         control={
           <Checkbox
+            checked={value}
+            value={value}
             disabled={isDisabled}
             onChange={update ? (e) => update(e, changeLabel, "checked") : null}
           />

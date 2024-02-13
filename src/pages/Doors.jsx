@@ -86,8 +86,6 @@ const Doors = () => {
           <Input
             TitleText={"Nafn hurðar"}
             valueVariable={[cabinetValues.nafn_hurdar, update, "nafn_hurdar"]}
-            onBlur={setImgHaedFocus}
-            onFocus={setImgHaedFocus}
           />
           <Input
             TitleText={"Hæð"}
