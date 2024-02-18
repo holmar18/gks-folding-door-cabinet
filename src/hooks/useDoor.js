@@ -1,39 +1,40 @@
 import {useState} from "react";
+import {doorValues as values} from "../constants/constants";
 
 const useDoor = () => {
-  const [cabinet, setCabinet] = useState({
-    width: 0,
-    height: 0,
-    vegg_tykkt: 0,
-    tykkt: 0,
-    gluggi: false,
-    customer: "",
-    seller: "",
-    tegund: "",
-    athugasemd: "",
-    annad: "",
-    lamir: "",
-    skra: "",
-    slaglisti: "",
-    parket: "",
-    flisar: "",
-    felli_throskuldur: false,
-    throskuldur: false,
-    gerreti: false,
-    vinstri: false,
-    haegri: false,
-    verk_nr: "",
-    nafn_hurdar: "",
-  });
+  const [cabinet, setCabinet] = useState(values);
+  const [allDoors, setAllDoors] = useState([]);
 
   const update = (e, type, target) => {
     e.preventDefault();
     setCabinet({...cabinet, [`${type}`]: e.target[`${target}`]});
   };
 
+  const saveDoor = () => {
+    const newCabinet = {...cabinet, id: allDoors.length};
+    setAllDoors([...allDoors, newCabinet]);
+    clear();
+  };
+
+  const clear = () => {
+    setCabinet({...values});
+  };
+
+  const getDoorFromList = (id) => {
+    var door = allDoors.find((hurd) => hurd.id === id);
+    setCabinet(door);
+
+    var allOtherDoors = allDoors.filter((hurdar) => hurdar.id !== id);
+    setAllDoors([...allOtherDoors]);
+  };
+
   return {
-    cabinetValues: cabinet,
+    doorValues: cabinet,
     update: update,
+    saveDoor: saveDoor,
+    clear: clear,
+    allDoors: allDoors,
+    getDoorFromList: getDoorFromList,
   };
 };
 

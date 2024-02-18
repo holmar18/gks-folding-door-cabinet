@@ -1,29 +1,5 @@
 import {useState} from "react";
-
-const values = {
-  width: "",
-  height: "",
-  depth: "",
-  carcase_color: "",
-  edge_color: "",
-  shelf_color: "",
-  door_color: "",
-  shelf_count: "",
-  shelf_depth: "",
-  door_count: "",
-  thickness: "",
-  customer: "",
-  seller: "",
-  carcase_nobilia: false,
-  carcase_change_gks: false,
-  self_nobila: false,
-  self_change_gks: false,
-  doors_nobila: false,
-  doors_change_gks: false,
-  light_Shelf: false,
-  Athugasemd1: "",
-  Athugasemd2: "",
-};
+import {fdcValues as values} from "../constants/constants";
 
 const useFoldingDorCabinet = () => {
   const [cabinet, setCabinet] = useState(values);

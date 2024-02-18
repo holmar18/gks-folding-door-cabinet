@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState, useRef} from "react";
 import "./style.css";
 // Components
 import Input from "../components/Input";
@@ -10,14 +10,13 @@ import Divider from "@mui/material/Divider";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 // Images
-import cabinet from "../assets/images/taekjaskapur/skapur.png";
 import doors2 from "../assets/images/taekjaskapur/2doors.png";
 import doors4 from "../assets/images/taekjaskapur/4doors.png";
 import shelf1 from "../assets/images/taekjaskapur/fdc1.png";
 import shelf2 from "../assets/images/taekjaskapur/fdc2.png";
 import shelf3 from "../assets/images/taekjaskapur/fdc3.png";
 // Components
-import TableDisplay from "../components/TableDisplay";
+import FoldingDoorCabinetTable from "../components/FoldingDoorCabinetTable";
 // Utils
 import currentDate from "../utils/currentDate";
 import FdcTabelData from "../utils/foldingDoorCabinetCalculation";
@@ -27,8 +26,9 @@ import useSaveAsPdf from "../hooks/useSaveAsPdf";
 
 const FoldingDorCabinet = () => {
   const {cabinetValues, update, clear} = useFoldingDorCabinet();
-  const {pdfTemplateRef, handleGeneratePdf} = useSaveAsPdf();
+  const {handleGeneratePdf} = useSaveAsPdf();
   const [img, setImg] = useState(doors4);
+  const pdfTemplateRef = useRef(null);
 
   useEffect(() => {
     console.log(cabinetValues);
@@ -63,7 +63,7 @@ const FoldingDorCabinet = () => {
           value={cabinetValues.seller}
           valueVariable={[cabinetValues.seller, update, "seller"]}
         />
-        <Input TitleText={"Date"} value={currentDate()} />
+        <Input TitleText={"Dags"} value={currentDate()} />
       </Grid>
 
       <Grid container gap={4} pt={4} className='container'>
@@ -227,7 +227,7 @@ const FoldingDorCabinet = () => {
       </Grid>
 
       <Grid container mb={8} mt={16}>
-        <TableDisplay
+        <FoldingDoorCabinetTable
           cv={cabinetValues}
           tableRows={FdcTabelData(cabinetValues)}
         />
@@ -241,7 +241,8 @@ const FoldingDorCabinet = () => {
               handleGeneratePdf(
                 cabinetValues.seller,
                 cabinetValues.customer,
-                currentDate()
+                currentDate(),
+                pdfTemplateRef
               )
             }>
             Vista PDF

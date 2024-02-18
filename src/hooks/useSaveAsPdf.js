@@ -1,12 +1,9 @@
-import {useRef} from "react";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 
 const useSaveAsPdf = () => {
-  const pdfTemplateRef = useRef(null);
-
-  const handleCanvasPdf = (seller, customer, date) => {
-    html2canvas(pdfTemplateRef.current).then((canvas) => {
+  const handleCanvasPdf = (seller, customer, date, pdfref) => {
+    html2canvas(pdfref.current).then((canvas) => {
       const imageData = canvas.toDataURL("image/png");
       const pdf = new jsPDF("p", "mm", "a4", true);
       const pdfWidth = pdf.internal.pageSize.getWidth();
@@ -29,7 +26,6 @@ const useSaveAsPdf = () => {
   };
 
   return {
-    pdfTemplateRef: pdfTemplateRef,
     handleGeneratePdf: handleCanvasPdf,
   };
 };

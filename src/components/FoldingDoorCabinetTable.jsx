@@ -12,7 +12,7 @@ import Paper from "@mui/material/Paper";
   Width - breidd = Y
   Depth - Dýpt = Z
 */
-const TableDisplay = ({cv, tableRows}) => {
+const FoldingDoorCabinetTable = ({cv, tableRows}) => {
   return (
     <>
       <span
@@ -83,4 +83,4 @@ const TableDisplay = ({cv, tableRows}) => {
   );
 };
 
-export default TableDisplay;
+export default FoldingDoorCabinetTable;

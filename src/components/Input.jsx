@@ -30,7 +30,6 @@ const Input = ({
         fullWidth={true}
         type={type}
         value={value}
-        defaultValue={value ? value : ""}
         autoComplete={autoComplete}
         multiline={multiline}
         rows={rows}
