@@ -49,7 +49,6 @@ const Doors = () => {
     } else {
       setCurrImgSrc(basic);
     }
-    console.log("UPDATED: ", doorValues);
   }, [imgBreiddFocus, imgHaedFocus, imgVeggtykkt, doorValues]);
 
   return (
@@ -501,7 +500,7 @@ const Doors = () => {
         {allDoors.length > 0
           ? allDoors.map((row) => (
               <Grid container mb={8} mt={16} key={row.id}>
-                <DoorTable getDoorFromList={getDoorFromList} tableRows={row} />
+                <DoorTable getDoorFromList={getDoorFromList} data={row} />
               </Grid>
             ))
           : null}

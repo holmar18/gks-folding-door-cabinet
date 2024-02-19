@@ -1,10 +1,13 @@
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import {doorValues as values} from "../constants/constants";
 
 const useDoor = () => {
   const [cabinet, setCabinet] = useState(values);
   const [allDoors, setAllDoors] = useState([]);
 
+  useEffect(() => {
+    console.log("ALL DOORS: " + allDoors);
+  }, [allDoors]);
   const update = (e, type, target) => {
     e.preventDefault();
     setCabinet({...cabinet, [`${type}`]: e.target[`${target}`]});
