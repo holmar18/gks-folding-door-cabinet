@@ -8,7 +8,6 @@ export const doorValues = {
   width: "",
   vegg_tykkt: "",
   tegund: "",
-  tykkt: "",
   efni_hurd: "",
   efni_karmur: "",
   kantliming_hurd: "",

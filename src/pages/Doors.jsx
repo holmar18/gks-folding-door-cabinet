@@ -4,6 +4,7 @@ import "./style.css";
 import Input from "../components/Input";
 import CheckBox from "../components/CheckBox";
 import SelectInput from "../components/SelectInput";
+import CustomizedSnackbars from "../components/SnackBar";
 // Material UI
 import Grid from "@mui/material/Grid";
 import Divider from "@mui/material/Divider";
@@ -24,7 +25,16 @@ import useSaveAsPdf from "../hooks/useSaveAsPdf";
 import DoorTable from "../components/DoorTable";
 
 const Doors = () => {
-  const {doorValues, update, saveDoor, allDoors, getDoorFromList} = useDoor();
+  const {
+    doorValues,
+    update,
+    saveDoor,
+    allDoors,
+    getDoorFromList,
+    errorText,
+    error,
+    setError,
+  } = useDoor();
   const {handleGeneratePdf} = useSaveAsPdf();
 
   const [imgBreiddFocus, setBreiddFocus] = useState(false);
@@ -132,12 +142,6 @@ const Doors = () => {
               changeLabel='tegund'
               label='Tegund'
               value={doorValues?.tegund}
-            />
-            <Input
-              TitleText={"Þykkt"}
-              type='number'
-              value={doorValues?.tykkt}
-              valueVariable={[doorValues?.tykkt, update, "tykkt"]}
             />
           </Grid>
         </Grid>
@@ -405,53 +409,48 @@ const Doors = () => {
             </Grid>
             <Grid item xs={5}>
               <Grid item xs={8}>
-                <Input
+                {/* <Input
                   TitleText={"Parket"}
                   valueVariable={[doorValues?.parket, update, "parket"]}
                   value={doorValues?.parket}
+                /> */}
+                <Input
+                  TitleText={"Karmþykkt"}
+                  type='number'
+                  value={doorValues?.karmþykkt}
+                  valueVariable={[doorValues?.karmþykkt, update, "karmþykkt"]}
+                />
+              </Grid>
+              <Grid item xs={8}>
+                {/* <Input
+                  TitleText={"Flisar"}
+                  valueVariable={[doorValues?.flisar, update, "flisar"]}
+                  value={doorValues?.flisar}
+                /> */}
+                <Input
+                  TitleText={"Bil við gólf"}
+                  type='number'
+                  value={doorValues?.bil_vid_golf}
+                  valueVariable={[
+                    doorValues?.bil_vid_golf,
+                    update,
+                    "bil_vid_golf",
+                  ]}
                 />
               </Grid>
               <Grid item xs={8}>
                 <Input
-                  TitleText={"Flisar"}
-                  valueVariable={[doorValues?.flisar, update, "flisar"]}
-                  value={doorValues?.flisar}
+                  TitleText={"Rými utan karms"}
+                  type='number'
+                  value={doorValues?.rymi_utan_karms}
+                  valueVariable={[
+                    doorValues?.rymi_utan_karms,
+                    update,
+                    "rymi_utan_karms",
+                  ]}
                 />
               </Grid>
             </Grid>
-          </Grid>
-        </Grid>
-
-        <Grid container mt={1} mb={4} paddingTop={7} paddingLeft={14}>
-          <Grid item xs={2} paddingRight={5}>
-            <Input
-              TitleText={"Karmþykkt"}
-              type='number'
-              value={doorValues?.karmþykkt}
-              valueVariable={[doorValues?.karmþykkt, update, "karmþykkt"]}
-            />
-          </Grid>
-
-          <Grid item xs={2} paddingRight={5}>
-            <Input
-              TitleText={"Bil við gólf"}
-              type='number'
-              value={doorValues?.bil_vid_golf}
-              valueVariable={[doorValues?.bil_vid_golf, update, "bil_vid_golf"]}
-            />
-          </Grid>
-
-          <Grid item xs={3} paddingRight={5}>
-            <Input
-              TitleText={"Rými utan karms"}
-              type='number'
-              value={doorValues?.rymi_utan_karms}
-              valueVariable={[
-                doorValues?.rymi_utan_karms,
-                update,
-                "rymi_utan_karms",
-              ]}
-            />
           </Grid>
         </Grid>
       </Container>
@@ -495,6 +494,13 @@ const Doors = () => {
           </Grid>
         </Grid>
       </Container>
+
+      <CustomizedSnackbars
+        open={error}
+        setOpen={setError}
+        text={errorText}
+        severity='error'
+      />
 
       <Container ref={tableRef}>
         {allDoors.length > 0

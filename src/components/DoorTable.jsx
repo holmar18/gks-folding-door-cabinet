@@ -288,9 +288,6 @@ const DoorTable = ({getDoorFromList, data}) => {
           </TableBody>
         </Table>
       </TableContainer>
-      <span style={{marginLeft: "auto", minWidth: "10rem", padding: "0.4rem"}}>
-        <b>Sölumaður: {data?.seller}</b>
-      </span>
     </>
   );
 };
