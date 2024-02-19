@@ -72,6 +72,7 @@ const Doors = () => {
             <Input
               TitleText={"Verk númer"}
               size={8}
+              type='number'
               value={doorValues?.verk_nr}
               valueVariable={[doorValues?.verk_nr, update, "verk_nr"]}
             />
