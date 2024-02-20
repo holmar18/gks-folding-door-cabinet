@@ -280,6 +280,13 @@ const DoorTable = ({getDoorFromList, data}) => {
               </TableRow>
             ) : null}
           </TableBody>
+          {data.athugasemd !== "" ? (
+            <TableRow>
+              <TableCell colSpan={10}>
+                <b>Athugasemd: {data.athugasemd}</b>
+              </TableCell>
+            </TableRow>
+          ) : null}
         </Table>
       </TableContainer>
     </>
