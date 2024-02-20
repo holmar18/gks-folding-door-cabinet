@@ -504,9 +504,44 @@ const Doors = () => {
       />
 
       <Container ref={tableRef}>
+        {allDoors.length > 0 ? (
+          <div
+            style={{
+              marginTop: "6rem",
+            }}>
+            <span
+              style={{
+                padding: "0.4rem",
+                marginRight: "3rem",
+              }}>
+              <b>Viðskiptavinur: {allDoors[0]?.customer}</b>
+            </span>
+            <span
+              style={{
+                padding: "0.4rem",
+                marginRight: "3rem",
+              }}>
+              <b>Sölumaður: {allDoors[0]?.seller}</b>
+            </span>
+            <span
+              style={{
+                padding: "0.4rem",
+                marginRight: "3rem",
+              }}>
+              <b>Dags: {currentDate()}</b>
+            </span>
+            <span
+              style={{
+                padding: "0.4rem",
+                marginRight: "3rem",
+              }}>
+              <b>Verknúmer: {allDoors[0]?.verk_nr}</b>
+            </span>
+          </div>
+        ) : null}
         {allDoors.length > 0
           ? allDoors.map((row) => (
-              <Grid container mb={8} mt={16} key={row.id}>
+              <Grid container mb={8} mt={8} key={row.id}>
                 <DoorTable getDoorFromList={getDoorFromList} data={row} />
               </Grid>
             ))

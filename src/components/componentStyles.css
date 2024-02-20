@@ -6,7 +6,7 @@
 
 .doorTable:hover {
   transform: scale(0.99);
-  background-color: #fafafa;
+  background-color: rgba(237, 237, 237, 0.5);
   transition: all 500ms ease; /* vendorless fallback */
   -o-transition: all 500ms ease; /* opera */
   -ms-transition: all 500ms ease; /* IE 10 */

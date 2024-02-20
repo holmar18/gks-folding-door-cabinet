@@ -66,12 +66,6 @@ const slaglistB = (data) => {
 const DoorTable = ({getDoorFromList, data}) => {
   return (
     <>
-      <span
-        style={{
-          padding: "0.4rem",
-        }}>
-        <b>Viðskiptavinur: {data?.customer}</b>
-      </span>
       <TableContainer
         className='doorTable'
         component={Paper}
@@ -221,7 +215,7 @@ const DoorTable = ({getDoorFromList, data}) => {
                 </TableCell>
                 <TableCell align='center'>{data.kantliming_karmur}</TableCell>
                 <TableCell align='center'>
-                  {data.felli_throskuldur ? "Já" : "Nei"}
+                  {data.felli_throskuldur ? "Felli: Já" : "Felli: Nei"}
                 </TableCell>
               </TableRow>
             ) : null}

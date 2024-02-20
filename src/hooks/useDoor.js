@@ -25,7 +25,7 @@ const useDoor = () => {
 
   const saveDoor = () => {
     if (handleErrors()) {
-      const newCabinet = {...cabinet, id: allDoors.length};
+      const newCabinet = {...cabinet, id: allDoors.length + 1};
       setAllDoors([...allDoors, newCabinet]);
       clear(newCabinet);
     }
