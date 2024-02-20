@@ -10,24 +10,44 @@ const useDoor = () => {
 
   const update = (e, type, target) => {
     e.preventDefault();
-    setCabinet({...cabinet, [`${type}`]: e.target[`${target}`]});
+    if (type === "efni_hurd") {
+      setCabinet({
+        ...cabinet,
+        efni_hurd: e.target[`${target}`],
+        efni_karmur: e.target[`${target}`],
+        kantliming_hurd: e.target[`${target}`],
+        kantliming_karmur: e.target[`${target}`],
+      });
+    } else {
+      setCabinet({...cabinet, [`${type}`]: e.target[`${target}`]});
+    }
   };
 
   const saveDoor = () => {
     if (handleErrors()) {
       const newCabinet = {...cabinet, id: allDoors.length};
       setAllDoors([...allDoors, newCabinet]);
-      clear();
+      clear(newCabinet);
     }
   };
 
-  const clear = () => {
-    let lastDoor = allDoors[allDoors.length - 1];
-    setCabinet({
+  const clear = (hurd) => {
+    const newCabinet = {
       ...values,
-      ...lastDoor.verk_nr,
-      ...lastDoor.customer,
-      ...lastDoor.seller,
+      verk_nr: hurd.verk_nr,
+      customer: hurd.customer,
+      seller: hurd.seller,
+      efni_hurd: hurd.efni_hurd,
+      efni_karmur: hurd.efni_karmur,
+      kantliming_hurd: hurd.kantliming_hurd,
+      kantliming_karmur: hurd.kantliming_karmur,
+      lamir: hurd.lamir,
+      skra: hurd.skra,
+      slaglisti: hurd.slaglisti,
+    };
+
+    setCabinet({
+      ...newCabinet,
     });
   };
 

@@ -73,8 +73,8 @@ const Doors = () => {
               TitleText={"Verk númer"}
               size={8}
               type='number'
-              value={doorValues?.verk_nr}
-              valueVariable={[doorValues?.verk_nr, update, "verk_nr"]}
+              value={doorValues.verk_nr}
+              valueVariable={[doorValues.verk_nr, update, "verk_nr"]}
             />
           </Grid>
         </Grid>

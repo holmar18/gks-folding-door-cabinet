@@ -1,0 +1,15 @@
+.doorTable {
+  cursor: grab;
+  cursor: -webkit-grab;
+  cursor: -moz-grab;
+}
+
+.doorTable:hover {
+  transform: scale(0.99);
+  background-color: #fafafa;
+  transition: all 500ms ease; /* vendorless fallback */
+  -o-transition: all 500ms ease; /* opera */
+  -ms-transition: all 500ms ease; /* IE 10 */
+  -moz-transition: all 500ms ease; /* Firefox */
+  -webkit-transition: all 500ms ease; /*safari and chrome */
+}

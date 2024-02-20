@@ -6,7 +6,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-
+import "./componentStyles.css";
 /*
   Height - Hæð = X
   Width - breidd = Y
@@ -64,7 +64,6 @@ const slaglistB = (data) => {
 };
 
 const DoorTable = ({getDoorFromList, data}) => {
-  console.log("INSIDE: ", data);
   return (
     <>
       <span
@@ -74,6 +73,7 @@ const DoorTable = ({getDoorFromList, data}) => {
         <b>Viðskiptavinur: {data?.customer}</b>
       </span>
       <TableContainer
+        className='doorTable'
         component={Paper}
         key={data?.id}
         onClick={() => getDoorFromList(data?.id)}>
@@ -88,7 +88,7 @@ const DoorTable = ({getDoorFromList, data}) => {
               </TableCell>
               <TableCell align='center' colSpan={3}>
                 <b>
-                  Gatmál: {p(data.heigh)}x{p(data.width)}x{p(data.vegg_tykkt)}
+                  Gatmál: {p(data.height)}x{p(data.width)}x{p(data.vegg_tykkt)}
                 </b>
               </TableCell>
               <TableCell align='center' colSpan={2}>
