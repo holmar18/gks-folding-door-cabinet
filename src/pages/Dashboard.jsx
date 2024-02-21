@@ -16,7 +16,8 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 // Images
-import gksLogo from "../assets/cover.webp";
+import gksLogo from "../assets/gks-logo.png";
+import coverImg from "../assets/cover.webp";
 // Components
 import FoldingDorCabinet from "./FoldingDorCabinet";
 import Doors from "./Doors";
@@ -82,8 +83,8 @@ export default function Dashboard() {
       return (
         <>
           <img
-            src={gksLogo}
-            alt='gks-logo'
+            src={coverImg}
+            alt='cover-img'
             style={{
               width: "950px",
               borderTopLeftRadius: "1rem",
