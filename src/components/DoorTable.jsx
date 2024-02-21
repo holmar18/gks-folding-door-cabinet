@@ -30,6 +30,16 @@ const lengdHurd = (data) => {
   );
 };
 
+const karmur_yfir_hlid_tegund = (data) => {
+  if (data.tegund === "33RH - E30") {
+    return "sp+kr+sp";
+  } else if (data.tegund === "42VL - E60") {
+    return "Límtré";
+  } else {
+    return "Spónaplata";
+  }
+};
+
 const hurdÞ_Tegund = (data) => {
   switch (data.tegund) {
     case "33RT8 - Venjuleg":
@@ -162,7 +172,9 @@ const DoorTable = ({getDoorFromList, data}) => {
               <TableCell align='center'>{data.vegg_tykkt}</TableCell>
               <TableCell align='center'>{data.karmþykkt}</TableCell>
               <TableCell align='center'>1</TableCell>
-              <TableCell align='center'>VANTAR</TableCell>
+              <TableCell align='center'>
+                {karmur_yfir_hlid_tegund(data)}
+              </TableCell>
               <TableCell align='center'>{data.efni_karmur}</TableCell>
 
               <TableCell align='center'>
@@ -185,7 +197,9 @@ const DoorTable = ({getDoorFromList, data}) => {
               <TableCell align='center'>
                 {data.skra === "Faldar lamir" ? 2 : 1}
               </TableCell>
-              <TableCell align='center'>VANTAR</TableCell>
+              <TableCell align='center'>
+                {karmur_yfir_hlid_tegund(data)}
+              </TableCell>
               <TableCell align='center'>{data.efni_karmur}</TableCell>
 
               <TableCell align='center'>
