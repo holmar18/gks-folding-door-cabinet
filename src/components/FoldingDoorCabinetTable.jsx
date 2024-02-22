@@ -15,12 +15,6 @@ import Paper from "@mui/material/Paper";
 const FoldingDoorCabinetTable = ({cv, tableRows}) => {
   return (
     <>
-      <span
-        style={{
-          padding: "0.4rem",
-        }}>
-        <b>Viðskiptavinur: {cv.customer}</b>
-      </span>
       <TableContainer component={Paper}>
         <Table sx={{minWidth: 700}} aria-label='customized table'>
           <TableHead>

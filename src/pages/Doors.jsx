@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useRef} from "react";
+import React, {useRef} from "react";
 import "./style.css";
 // Components
 import Input from "../components/Input";
@@ -11,19 +11,14 @@ import Divider from "@mui/material/Divider";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Fab from "@mui/material/Fab";
-// Images
-import basic from "../assets/images/hurd/basic.png";
-import breidd from "../assets/images/hurd/breidd.png";
-import haed from "../assets/images/hurd/haed.png";
-import veggykkt from "../assets/images/hurd/veggykkt.png";
-import haegriGerreti from "../assets/images/hurd/haegriMgerreti.png";
-import vinstriGerreti from "../assets/images/hurd/vinstiMgerreti.png";
+
 // Utils
 import currentDate from "../utils/currentDate";
 // Hooks
 import useDoor from "../hooks/useDoor";
 import useSaveAsPdf from "../hooks/useSaveAsPdf";
 import DoorTable from "../components/DoorTable";
+import useDoorImages from "../hooks/useDoorImages.js";
 
 const Doors = () => {
   const {
@@ -38,29 +33,11 @@ const Doors = () => {
   } = useDoor();
   const {handleGeneratePdf} = useSaveAsPdf();
 
-  const [imgBreiddFocus, setBreiddFocus] = useState(false);
-  const [imgHaedFocus, setImgHaedFocus] = useState(false);
-  const [imgVeggtykkt, setImgVeggTykkt] = useState(false);
-  const [currImgSrc, setCurrImgSrc] = useState(basic);
+  const {currImgSrc, setBreiddFocus, setImgHaedFocus, setImgVeggTykkt} =
+    useDoorImages(doorValues);
 
   const singleItemRef = useRef(null);
   const tableRef = useRef(null);
-
-  useEffect(() => {
-    if (imgBreiddFocus) {
-      setCurrImgSrc(breidd);
-    } else if (imgHaedFocus) {
-      setCurrImgSrc(haed);
-    } else if (imgVeggtykkt) {
-      setCurrImgSrc(veggykkt);
-    } else if (doorValues?.haegri) {
-      setCurrImgSrc(haegriGerreti);
-    } else if (doorValues?.vinstri) {
-      setCurrImgSrc(vinstriGerreti);
-    } else {
-      setCurrImgSrc(basic);
-    }
-  }, [imgBreiddFocus, imgHaedFocus, imgVeggtykkt, doorValues]);
 
   return (
     <>
@@ -69,7 +46,7 @@ const Doors = () => {
           <Grid item xs={8}>
             <h1>Hurð</h1>
           </Grid>
-          <Grid container xs={4} flex={1} justifyContent='flex-end'>
+          <Grid container flex={1} justifyContent='flex-end'>
             <Input
               TitleText={"Verk númer"}
               size={8}
@@ -211,7 +188,7 @@ const Doors = () => {
           </Grid>
 
           <Grid item xs={6} paddingBottom={3}>
-            <Grid container paddingLeft={6} xs={9}>
+            <Grid container paddingLeft={6}>
               <Input
                 TitleText={"Efni hurð"}
                 value={doorValues?.efni_hurd}
@@ -248,7 +225,7 @@ const Doors = () => {
           </Grid>
 
           <Grid container item className='container'>
-            <Grid container item xs={6}>
+            <Grid item xs={6}>
               {doorValues.gluggi ? (
                 <Grid item xs={12} paddingLeft={10}>
                   <Grid container paddingLeft={6} xs={11} spacing={4}>

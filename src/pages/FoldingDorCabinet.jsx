@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useRef} from "react";
+import React, {useRef} from "react";
 import "./style.css";
 // Components
 import Input from "../components/Input";
@@ -8,15 +8,8 @@ import SelectInput from "../components/SelectInput";
 import Grid from "@mui/material/Grid";
 import Divider from "@mui/material/Divider";
 import Container from "@mui/material/Container";
-import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Fab from "@mui/material/Fab";
-// Images
-import doors2 from "../assets/images/taekjaskapur/2doors.png";
-import doors4 from "../assets/images/taekjaskapur/4doors.png";
-import shelf1 from "../assets/images/taekjaskapur/fdc1.png";
-import shelf2 from "../assets/images/taekjaskapur/fdc2.png";
-import shelf3 from "../assets/images/taekjaskapur/fdc3.png";
 // Components
 import FoldingDoorCabinetTable from "../components/FoldingDoorCabinetTable";
 // Utils
@@ -25,29 +18,13 @@ import FdcTabelData from "../utils/foldingDoorCabinetCalculation";
 // Hooks
 import useFoldingDorCabinet from "../hooks/useFoldingDorCabinet";
 import useSaveAsPdf from "../hooks/useSaveAsPdf";
+import useFoldingDoorCabinetImage from "../hooks/useFoldingDoorCabinetImage";
 
 const FoldingDorCabinet = () => {
   const {cabinetValues, update, clear} = useFoldingDorCabinet();
   const {handleGeneratePdf} = useSaveAsPdf();
-  const [img, setImg] = useState(doors4);
+  const img = useFoldingDoorCabinetImage(cabinetValues);
   const pdfTemplateRef = useRef(null);
-
-  useEffect(() => {
-    console.log(cabinetValues);
-    if (cabinetValues.door_count === 2) {
-      setImg(doors2);
-    } else if (cabinetValues.door_count === 4) {
-      setImg(doors4);
-    } else if (cabinetValues.shelf_count === "3") {
-      setImg(shelf3);
-    } else if (cabinetValues.shelf_count === "2") {
-      setImg(shelf2);
-    } else if (cabinetValues.shelf_count === "1") {
-      setImg(shelf1);
-    } else {
-      setImg(doors2);
-    }
-  }, [cabinetValues]);
 
   return (
     <Container ref={pdfTemplateRef}>

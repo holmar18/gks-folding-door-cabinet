@@ -55,7 +55,7 @@ const FdcTabelData = (cv) => {
       "Hurðar",
       cv.door_color,
       cv.height - 5,
-      cv.door_count === 2 ? cv.width / 2 - 8 : cv.width / 4 - 16,
+      cv.door_count === 2 ? cv.width / 2 - 4 : cv.width / 4 - 4,
       "19-22",
       cv.door_count,
       cv.edge_color,

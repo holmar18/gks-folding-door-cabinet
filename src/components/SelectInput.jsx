@@ -15,12 +15,16 @@ const SelectInput = ({
         <InputLabel id='demo-simple-select-standard-label'>{label}</InputLabel>
         <Select
           labelId='demo-simple-select-standard-label'
-          id='demo-simple-select-standard'
+          id={label}
           label={label}
           value={value}
           onChange={(e) => update(e, changeLabel, "value")}>
           {values.map((ele) => {
-            return <MenuItem value={ele}>{ele}</MenuItem>;
+            return (
+              <MenuItem key={ele} value={ele}>
+                {ele}
+              </MenuItem>
+            );
           })}
         </Select>
       </FormControl>

@@ -16,10 +16,6 @@ const p = (n) => {
   return parseInt(n);
 };
 
-const f = (n) => {
-  return parseFloat(n);
-};
-
 const lengdHurd = (data) => {
   return (
     p(data.height) -

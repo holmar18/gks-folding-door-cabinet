@@ -4,10 +4,7 @@ runme:
   version: v3
 ---
 
-TODO: Þegar sett er inn Efni hurð þá --> Efni Karmur, Kantlim Hurð, Kantlim Karmur
-TODO: Það verður að vera valinn VINSTRI hægt
-TODO: ALLIR DALKAR VERÐA AÐ VERA VALDIR NEMA (Parket, flisar, athugasemdir, gerefti, felliþröskuldur, gluggi Þröskuldur)
+FEATURES ADDED:
 
-TODO: HVAÐ GILDI 0 út þegar skráð er Hurð og hvað gildi haldast
-
-TODO: Fjarlægja Viðskiptavinur og sölumaður á Báðum Hurð/Tækjaskáp
+1. Þegar klikkað er utan hliðarslánna þá lokast hún
+2. 

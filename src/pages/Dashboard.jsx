@@ -15,12 +15,13 @@ import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
+import useScrollTrigger from "@mui/material/useScrollTrigger";
+import Slide from "@mui/material/Slide";
+import {ClickAwayListener} from "@mui/base/ClickAwayListener";
 // Images
 import gksLogo from "../assets/gks-logo.png";
-import coverImg from "../assets/cover.webp";
-// Components
-import FoldingDorCabinet from "./FoldingDorCabinet";
-import Doors from "./Doors";
+// Router
+import Routing from "../router/Routing";
 
 const drawerWidth = 200;
 
@@ -68,7 +69,6 @@ const Drawer = styled(MuiDrawer, {
   },
 }));
 
-// TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
 export default function Dashboard() {
@@ -78,57 +78,62 @@ export default function Dashboard() {
     setOpen(!open);
   };
 
-  const currentRoute = () => {
-    if (route === "") {
-      return (
-        <>
-          <img
-            src={coverImg}
-            alt='cover-img'
-            style={{
-              width: "950px",
-              borderTopLeftRadius: "1rem",
-              borderTopRightRadius: "4rem",
-              borderBottomLeftRadius: "4rem",
-              borderBottomRightRadius: "1rem",
-            }}
-          />
-        </>
-      );
-    } else if (route === "fdc") {
-      return <FoldingDorCabinet />;
-    } else if (route === "doors") {
-      return <Doors />;
-    }
-  };
+  function HideOnScroll(props) {
+    const {children, window} = props;
+    // Note that you normally won't need to set the window ref as useScrollTrigger
+    // will default to window.
+    // This is only being set here because the demo is in an iframe.
+    const trigger = useScrollTrigger({
+      window,
+    });
+
+    const m = (trigger) => {
+      console.log("TRIGGERED");
+      return !trigger;
+    };
+
+    return (
+      <Slide appear={false} direction='down' in={m(trigger)}>
+        {children}
+      </Slide>
+    );
+  }
 
   return (
     <ThemeProvider theme={defaultTheme}>
       <Box sx={{display: "flex"}}>
         <CssBaseline />
-        <AppBar position='absolute' open={open}>
-          <Toolbar
-            sx={{
-              pr: "24px", // keep right padding when drawer closed
-            }}>
-            <IconButton
-              edge='start'
-              color='inherit'
-              aria-label='open drawer'
-              onClick={toggleDrawer}
+
+        <ClickAwayListener onClickAway={() => setOpen(false)}>
+          <AppBar position='absolute' open={open}>
+            <Toolbar
               sx={{
-                marginRight: "36px",
-                ...(open && {display: "none"}),
+                pr: "24px", // keep right padding when drawer closed
               }}>
-              <MenuIcon />
-            </IconButton>
-            <img
-              src={gksLogo}
-              alt='gks-logo'
-              style={{width: "50px", borderRadius: "50%", marginLeft: "auto"}}
-            />
-          </Toolbar>
-        </AppBar>
+              <IconButton
+                edge='start'
+                color='inherit'
+                aria-label='open drawer'
+                onClick={toggleDrawer}
+                sx={{
+                  marginRight: "36px",
+                  ...(open && {display: "none"}),
+                }}>
+                <MenuIcon />
+              </IconButton>
+              <img
+                src={gksLogo}
+                alt='gks-logo'
+                style={{
+                  width: "50px",
+                  borderRadius: "50%",
+                  marginLeft: "auto",
+                }}
+              />
+            </Toolbar>
+          </AppBar>
+        </ClickAwayListener>
+
         <Drawer variant='permanent' open={open}>
           <Toolbar
             sx={{
@@ -156,6 +161,7 @@ export default function Dashboard() {
             <Divider sx={{my: 1}} />
           </List>
         </Drawer>
+
         <Box
           component='main'
           sx={{
@@ -179,7 +185,7 @@ export default function Dashboard() {
                     flexDirection: "column",
                     alignItems: "center",
                   }}>
-                  {currentRoute()}
+                  <Routing route={route} />
                 </Paper>
               </Grid>
             </Grid>
