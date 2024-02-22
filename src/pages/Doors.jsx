@@ -9,7 +9,8 @@ import CustomizedSnackbars from "../components/SnackBar";
 import Grid from "@mui/material/Grid";
 import Divider from "@mui/material/Divider";
 import Container from "@mui/material/Container";
-import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
+import Fab from "@mui/material/Fab";
 // Images
 import basic from "../assets/images/hurd/basic.png";
 import breidd from "../assets/images/hurd/breidd.png";
@@ -456,7 +457,7 @@ const Doors = () => {
         </Grid>
       </Container>
 
-      <Container>
+      {/* <Container>
         <Grid container mb={8} mt={16} ml={12}>
           <Grid item xs={2}>
             <Button
@@ -484,7 +485,7 @@ const Doors = () => {
                   tableRef
                 )
               }>
-              Visa töflu PDF
+              Vista töflu PDF
             </Button>
           </Grid>
 
@@ -494,7 +495,7 @@ const Doors = () => {
             </Button>
           </Grid>
         </Grid>
-      </Container>
+      </Container> */}
 
       <CustomizedSnackbars
         open={error}
@@ -547,6 +548,40 @@ const Doors = () => {
             ))
           : null}
       </Container>
+
+      <Box
+        sx={{
+          "& > :not(style)": {m: 1},
+          position: "absolute",
+          bottom: 0,
+          right: "2%",
+        }}>
+        <Box display={"flex"} flexDirection={"column"}>
+          <Fab
+            style={{padding: "12px", marginBottom: "0.8rem"}}
+            variant='extended'
+            size='small'
+            color='primary'
+            onClick={saveDoor}>
+            Skrá hurð
+          </Fab>
+          <Fab
+            style={{padding: "12px"}}
+            variant='extended'
+            size='small'
+            color='primary'
+            onClick={() =>
+              handleGeneratePdf(
+                doorValues.seller,
+                doorValues.customer,
+                currentDate(),
+                tableRef
+              )
+            }>
+            Vista töflu PDF
+          </Fab>
+        </Box>
+      </Box>
 
       {/* {doorValues ? (
         <Container ref={tableRef}>

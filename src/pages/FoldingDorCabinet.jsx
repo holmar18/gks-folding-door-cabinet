@@ -9,6 +9,8 @@ import Grid from "@mui/material/Grid";
 import Divider from "@mui/material/Divider";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
+import Fab from "@mui/material/Fab";
 // Images
 import doors2 from "../assets/images/taekjaskapur/2doors.png";
 import doors4 from "../assets/images/taekjaskapur/4doors.png";
@@ -233,7 +235,7 @@ const FoldingDorCabinet = () => {
         />
       </Grid>
 
-      <Grid container spacing={2} columns={16} mb={5}>
+      {/* <Grid container spacing={2} columns={16} mb={5}>
         <Grid item xs={14}>
           <Button
             variant='outlined'
@@ -253,7 +255,41 @@ const FoldingDorCabinet = () => {
             Hreinsa
           </Button>
         </Grid>
-      </Grid>
+      </Grid> */}
+
+      <Box
+        sx={{
+          "& > :not(style)": {m: 1},
+          position: "absolute",
+          bottom: 0,
+          right: "2%",
+        }}>
+        <Box display={"flex"} flexDirection={"column"}>
+          <Fab
+            style={{padding: "12px", marginBottom: "0.8rem"}}
+            variant='extended'
+            size='small'
+            color='primary'
+            onClick={clear}>
+            Hreinsa
+          </Fab>
+          <Fab
+            style={{padding: "12px"}}
+            variant='extended'
+            size='small'
+            color='primary'
+            onClick={() =>
+              handleGeneratePdf(
+                cabinetValues.seller,
+                cabinetValues.customer,
+                currentDate(),
+                pdfTemplateRef
+              )
+            }>
+            Vista PDF
+          </Fab>
+        </Box>
+      </Box>
     </Container>
   );
 };
