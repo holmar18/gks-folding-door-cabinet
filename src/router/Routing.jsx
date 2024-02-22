@@ -1,5 +1,3 @@
-// MUI
-import Grow from "@mui/material/Grow";
 // Pages
 import FoldingDorCabinet from "../pages/FoldingDorCabinet";
 import Doors from "../pages/Doors";

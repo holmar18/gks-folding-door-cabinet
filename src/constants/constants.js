@@ -61,5 +61,6 @@ export const fdcValues = {
   doors_change_gks: false,
   light_Shelf: false,
   Athugasemd1: "",
-  Athugasemd2: "",
+  holdur: "",
+  holdur_fræsa: false,
 };
