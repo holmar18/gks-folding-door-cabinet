@@ -19,6 +19,8 @@ import FdcTabelData from "../utils/foldingDoorCabinetCalculation";
 // Hooks
 import useFoldingDorCabinet from "../hooks/useFoldingDorCabinet";
 import useFoldingDoorCabinetImage from "../hooks/useFoldingDoorCabinetImage";
+// Context
+import {useTranslationContext} from "../context/TranslationContext";
 
 const FoldingDorCabinet = () => {
   const {
@@ -33,26 +35,28 @@ const FoldingDorCabinet = () => {
   } = useFoldingDorCabinet();
 
   const img = useFoldingDoorCabinetImage(cabinetValues);
+  const {translations, setCurrentTranslation, currentTranslation} =
+    useTranslationContext();
 
   return (
     <>
       <Container ref={pdfTemplateRef}>
-        <h1>Tækjaskápur</h1>
+        <h1>{translations.Tækjaskapur}</h1>
         <Divider />
 
         <Grid container gap={4} pt={1} className='container'>
           <Input
-            TitleText={"Viðskiptavinur"}
+            TitleText={translations.Viðskiptavinur}
             size={4}
             value={cabinetValues.customer}
             valueVariable={[cabinetValues.customer, update, "customer"]}
           />
           <Input
-            TitleText={"Sölumaður"}
+            TitleText={translations.Sölumaður}
             value={cabinetValues.seller}
             valueVariable={[cabinetValues.seller, update, "seller"]}
           />
-          <Input TitleText={"Dags"} value={currentDate()} />
+          <Input TitleText={translations.Dags} value={currentDate()} />
         </Grid>
 
         <Grid container gap={4} pt={4} className='container'>
@@ -62,19 +66,19 @@ const FoldingDorCabinet = () => {
 
           <Grid item xs={4} gap={4}>
             <Input
-              TitleText={"Breidd"}
+              TitleText={translations.Breidd}
               type='number'
               value={cabinetValues.width}
               valueVariable={[cabinetValues.width, update, "width"]}
             />
             <Input
-              TitleText={"Hæð"}
+              TitleText={translations.Hæð}
               type='number'
               value={cabinetValues.height}
               valueVariable={[cabinetValues.height, update, "height"]}
             />
             <Input
-              TitleText={"Dýpt"}
+              TitleText={translations.Dýpt}
               type='number'
               value={cabinetValues.depth}
               valueVariable={[cabinetValues.depth, update, "depth"]}
@@ -83,11 +87,11 @@ const FoldingDorCabinet = () => {
               values={[16, 19]}
               update={update}
               changeLabel='thickness'
-              label='Þykkt'
+              label={translations.Þykkt}
               value={cabinetValues.thickness}
             />
             <Input
-              TitleText={"Innmatur litur"}
+              TitleText={translations.Innmatur_litur}
               value={cabinetValues.carcase_color}
               valueVariable={[
                 cabinetValues.carcase_color,
@@ -96,18 +100,18 @@ const FoldingDorCabinet = () => {
               ]}
             />
             <Input
-              TitleText={"Kantlíming litur"}
+              TitleText={translations.Kantliming_litur}
               value={cabinetValues.edge_color}
               valueVariable={[cabinetValues.edge_color, update, "edge_color"]}
             />
             <CheckBox
-              TitleText={"Innmatur kemur frá Nobilia"}
+              TitleText={translations.Innmatur_fra_nobilia}
               update={update}
               changeLabel='carcase_nobilia'
               value={cabinetValues.carcase_nobilia}
             />
             <CheckBox
-              TitleText={"Þarf að breyta hjá GKS"}
+              TitleText={translations.Breyta_hja_gks}
               update={update}
               mt={0}
               isDisabled={!cabinetValues.carcase_nobilia}
@@ -119,20 +123,20 @@ const FoldingDorCabinet = () => {
 
         <Grid container gap={2} className='container'>
           <Input
-            TitleText={"Hillu fjöldi"}
+            TitleText={translations.Hillu_fjoldi}
             size={2}
             type='number'
             value={cabinetValues.shelf_count}
             valueVariable={[cabinetValues.shelf_count, update, "shelf_count"]}
           />
           <Input
-            TitleText={"Hillu litur"}
+            TitleText={translations.Hillu_litur}
             size={3}
             value={cabinetValues.shelf_color}
             valueVariable={[cabinetValues.shelf_color, update, "shelf_color"]}
           />
           <Input
-            TitleText={"Hillu dýpt"}
+            TitleText={translations.Hillu_dypt}
             size={3}
             type='number'
             value={cabinetValues.shelf_depth}
@@ -142,19 +146,19 @@ const FoldingDorCabinet = () => {
 
         <Grid container gap={4} pt={2} className='container'>
           <CheckBox
-            TitleText={"Ljós í hillu"}
+            TitleText={translations.Ljos_hillu}
             update={update}
             changeLabel='light_Shelf'
             value={cabinetValues.light_Shelf}
           />
           <CheckBox
-            TitleText={"Hillur koma frá Nobila"}
+            TitleText={translations.Hilla_kom_fra_nobilia}
             update={update}
             changeLabel='self_nobila'
             value={cabinetValues.self_nobila}
           />
           <CheckBox
-            TitleText={"Þarf að breyta hjá GKS"}
+            TitleText={translations.Þarf_ad_breyta_gks}
             isDisabled={!cabinetValues.self_nobila}
             update={update}
             changeLabel='self_change_gks'
@@ -164,7 +168,7 @@ const FoldingDorCabinet = () => {
 
         <Grid container gap={4} mt={1} className='container'>
           <Input
-            TitleText={"Athugasemd 1"}
+            TitleText={translations.Ath_1}
             size={8}
             pt={2}
             value={cabinetValues.Athugasemd1}
@@ -178,11 +182,11 @@ const FoldingDorCabinet = () => {
             values={[2, 4]}
             update={update}
             changeLabel='door_count'
-            label='Hurða fjöldi'
+            label={translations.Hurða_fjoldi}
             size={4}
           />
           <Input
-            TitleText={"Hurða litur"}
+            TitleText={translations.Hurða_litur}
             size={4}
             value={cabinetValues.door_color}
             valueVariable={[cabinetValues.door_color, update, "door_color"]}
@@ -191,13 +195,13 @@ const FoldingDorCabinet = () => {
 
         <Grid container gap={4} pt={2} className='container'>
           <CheckBox
-            TitleText={"Hurðir koma frá Nobilia"}
+            TitleText={translations.Hurðir_koma_fra_nobilia}
             update={update}
             changeLabel='doors_nobila'
             value={cabinetValues.doors_nobila}
           />
           <CheckBox
-            TitleText={"Þarf að breyta hjá GKS"}
+            TitleText={translations.Hurð_breyta_gks}
             isDisabled={!cabinetValues.doors_nobila}
             update={update}
             changeLabel='doors_change_gks'
@@ -208,7 +212,7 @@ const FoldingDorCabinet = () => {
         <Grid container mt={1} mb={4} className='container'>
           <Grid item xs={4}>
             <Input
-              TitleText={"Höldur"}
+              TitleText={translations.Holdur}
               size={8}
               pt={2}
               value={cabinetValues.holdur}
@@ -217,7 +221,7 @@ const FoldingDorCabinet = () => {
           </Grid>
           <Grid item xs={4}>
             <CheckBox
-              TitleText={"Fræsa höldur"}
+              TitleText={translations.Fræsa_holdur}
               isDisabled={cabinetValues.holdur === "" ? true : false}
               update={update}
               changeLabel='holdur_fræsa'
@@ -245,9 +249,17 @@ const FoldingDorCabinet = () => {
               style={{padding: "12px", marginBottom: "0.8rem"}}
               variant='extended'
               size='small'
+              color='secondary'
+              onClick={setCurrentTranslation}>
+              {currentTranslation === "Icelandic" ? "English" : "Icelandic"}
+            </Fab>
+            <Fab
+              style={{padding: "12px", marginBottom: "0.8rem"}}
+              variant='extended'
+              size='small'
               color='primary'
               onClick={clear}>
-              Hreinsa
+              {translations.hreinsa}
             </Fab>
             <Fab
               style={{padding: "12px"}}
@@ -255,7 +267,7 @@ const FoldingDorCabinet = () => {
               size='small'
               color='primary'
               onClick={savePdf}>
-              Vista PDF
+              {translations.savepdf}
             </Fab>
           </Box>
         </Box>
