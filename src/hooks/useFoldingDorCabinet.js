@@ -83,7 +83,7 @@ const useFoldingDorCabinet = () => {
       setErrorText("Hurða fjölda vantar");
       setError(true);
       return false;
-    } else if (cabinet.door_color === "") {
+    } else if (cabinet.door_color === "" && !cabinet.door_count === "0") {
       setErrorText("Hurða lit vantar");
       setError(true);
       return false;

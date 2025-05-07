@@ -179,7 +179,7 @@ const FoldingDorCabinet = () => {
         <Grid container gap={4} mt={6} className='container'>
           <SelectInput
             value={cabinetValues.door_count}
-            values={[2, 4]}
+            values={[0, 2, 4]}
             update={update}
             changeLabel='door_count'
             label={translations.Hurða_fjoldi}
@@ -196,6 +196,7 @@ const FoldingDorCabinet = () => {
         <Grid container gap={4} pt={2} className='container'>
           <CheckBox
             TitleText={translations.Hurðir_koma_fra_nobilia}
+            isDisabled={cabinetValues.door_count === 0}
             update={update}
             changeLabel='doors_nobila'
             value={cabinetValues.doors_nobila}

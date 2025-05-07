@@ -10,7 +10,7 @@ function createData(hlutur, efni, l, b, þ, magn, efni_kant, kantliming) {
 }
 
 const FdcTabelData = (cv) => {
-  return [
+  let data = [
     createData(
       "Hliðar",
       cv.carcase_color,
@@ -51,17 +51,26 @@ const FdcTabelData = (cv) => {
       cv.edge_color,
       hillur
     ),
-    createData(
-      "Hurðar",
-      cv.door_color,
-      cv.height - 5,
-      cv.door_count === 2 ? cv.width / 2 - 4 : cv.width / 4 - 4,
-      "19-22",
-      cv.door_count,
-      cv.edge_color,
-      hurdar
-    ),
-  ];
+  ]
+
+  if(cv.door_count !== 0) {
+    var door = 
+      createData(
+        "Hurðar",
+        cv.door_color,
+        cv.height - 5,
+        cv.door_count === 2 ? cv.width / 2 - 4 : cv.width / 4 - 4,
+        "19-22",
+        cv.door_count,
+        cv.edge_color,
+        hurdar
+      )
+
+      data.push(door);
+  }
+
+  return data;
 };
+
 
 export default FdcTabelData;
