@@ -1,6 +1,11 @@
 const translations = (current) => {
   if (current === "Icelandic") {
     return {
+      dashboard_Navigation: {
+        home: "Heim",
+        tækjaskapur: "Tækjaskápur",
+        hurdar: "Hurðar"
+      },
       Tækjaskapur: "Tækjaskápur",
       Viðskiptavinur: "Viðskiptavinur",
       Sölumaður: "Sölumaður",
@@ -28,9 +33,34 @@ const translations = (current) => {
       Fræsa_holdur: "Fræsa höldur",
       hreinsa: "Hreinsa",
       savepdf: "Vista PDF",
+      hilla_vorunumer: "Vörunúmer hillu",
+      hurd_vorunumer: "Vörunúmer hurðar",
+      bak_vorunumber: "Vörunúmer bak",
+      toppur_vorunumer: "Vörunúmer toppur",
+      hlid_vorunumer: "Vörunúmer hliða",
+      vista_vorunumer: "Vista",
+      vorunumer: "Vörunúmer",
+      error_missing_salesperson: "Sölumann vantar",
+      error_missing_customer: "Viðskiptavin vantar",
+      error_missing_width: "Breidd vantar",
+      error_missing_height: "Hæð vantar",
+      error_missing_dept: "Dýpt vantar",
+      error_missing_carcase_color: "Litur inmats vantar",
+      error_missing_edge_color: "Litur kantlímingar vantar",
+      error_missing_thickness: "Þykkt vantar",
+      error_missing_shelf_count: "Hillu fjölda vantar",
+      error_missing_shelf_color: "Hillu lit vantar",
+      error_missing_shelf_depth: "Hillu dýpt vantar",
+      error_missing_door_count: "Hurða fjölda vantar",
+      error_missing_door_color: "Hurða lit vantar",
     };
   } else {
     return {
+      dashboard_Navigation: {
+        home: "Home",
+        tækjaskapur: "Applience cabinet",
+        hurdar: "Doors"
+      },
       Tækjaskapur: "Applience cabinet",
       Viðskiptavinur: "Customer",
       Sölumaður: "Salesman",
@@ -58,6 +88,26 @@ const translations = (current) => {
       Fræsa_holdur: "Milling handles",
       hreinsa: "Clear",
       savepdf: "Save PDF",
+      hilla_vorunumer: "Shelf part number",
+      hurd_vorunumer: "Door part number",
+      bak_vorunumber: "Back part number",
+      toppur_vorunumer: "Top part number",
+      hlid_vorunumer: "Side part number",
+      vista_vorunumer: "Save",
+      vorunumer: "Part numbers",
+      error_missing_salesperson: "Salesperson is missing",  
+      error_missing_customer: "Customer is missing",  
+      error_missing_width: "Width is missing",  
+      error_missing_height: "Height is missing",  
+      error_missing_dept: "Depth is missing",  
+      error_missing_carcase_color: "Carcase color is missing",  
+      error_missing_edge_color: "Edge color is missing",  
+      error_missing_thickness: "Thickness is missing",  
+      error_missing_shelf_count: "Shelf count is missing",  
+      error_missing_shelf_color: "Shelf color is missing",  
+      error_missing_shelf_depth: "Shelf depth is missing",  
+      error_missing_door_count: "Door count is missing",  
+      error_missing_door_color: "Door color is missing"
     };
   }
 };

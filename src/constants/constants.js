@@ -63,4 +63,10 @@ export const fdcValues = {
   Athugasemd1: "",
   holdur: "",
   holdur_fræsa: false,
+  // Ef valið er frá nobilia þarf að bæta inn vörunúmerum.
+  hilla_vorunumer: "",
+  hurd_vorunumer: "", 
+  bak_vorunumer: "",
+  toppur_vorunumer: "",
+  hlid_vorunumer: "",
 };

@@ -22,26 +22,29 @@ const FoldingDoorCabinetTable = ({cv, tableRows}) => {
               <TableCell>
                 <b>Hlut nr.</b>
               </TableCell>
-              <TableCell align='right'>
+              <TableCell align='center'>
                 <b>Efni</b>
               </TableCell>
-              <TableCell align='right'>
+              <TableCell align='center'>
                 <b>Lengd</b>
               </TableCell>
-              <TableCell align='right'>
+              <TableCell align='center'>
                 <b>Breidd</b>
               </TableCell>
-              <TableCell align='right'>
+              <TableCell align='center'>
                 <b>Þykkt</b>
               </TableCell>
-              <TableCell align='right'>
+              <TableCell align='center'>
                 <b>Magn</b>
               </TableCell>
-              <TableCell align='right'>
+              <TableCell align='center'>
                 <b>Efni kant.</b>
               </TableCell>
-              <TableCell align='right'>
+              <TableCell align='center'>
                 <b>Kantlíming</b>
+              </TableCell>             
+              <TableCell align='center'>
+                <b>Vörunumer</b>
               </TableCell>
             </TableRow>
           </TableHead>
@@ -51,13 +54,13 @@ const FoldingDoorCabinetTable = ({cv, tableRows}) => {
                 <TableCell component='th' scope='row'>
                   {row.hlutur}
                 </TableCell>
-                <TableCell align='right'>{row.efni}</TableCell>
-                <TableCell align='right'>{row.l < 0 ? 0 : row.l}</TableCell>
-                <TableCell align='right'>{row.b < 0 ? 0 : row.b}</TableCell>
-                <TableCell align='right'>{row.þ < 0 ? 0 : row.þ}</TableCell>
-                <TableCell align='right'>{row.magn}</TableCell>
-                <TableCell align='right'>{row.efni_kant}</TableCell>
-                <TableCell align='right'>
+                <TableCell align='center'>{row.efni}</TableCell>
+                <TableCell align='center'>{row.l < 0 ? 0 : row.l}</TableCell>
+                <TableCell align='center'>{row.b < 0 ? 0 : row.b}</TableCell>
+                <TableCell align='center'>{row.þ < 0 ? 0 : row.þ}</TableCell>
+                <TableCell align='center'>{row.magn}</TableCell>
+                <TableCell align='center'>{row.efni_kant}</TableCell>
+                <TableCell align='center'>
                   <img
                     src={row.kantliming}
                     alt='liming'
@@ -65,6 +68,7 @@ const FoldingDoorCabinetTable = ({cv, tableRows}) => {
                     width={140}
                   />
                 </TableCell>
+                <TableCell align='center'>{row.vorunumer}</TableCell>
               </TableRow>
             ))}
           </TableBody>

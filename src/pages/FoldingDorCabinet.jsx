@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import "./style.css";
 // Components
 import Input from "../components/Input";
@@ -10,6 +10,11 @@ import Divider from "@mui/material/Divider";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Fab from "@mui/material/Fab";
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
+import DialogActions from '@mui/material/DialogActions';
+import Button from '@mui/material/Button';
 // Components
 import FoldingDoorCabinetTable from "../components/FoldingDoorCabinetTable";
 import CustomizedSnackbars from "../components/SnackBar";
@@ -31,12 +36,29 @@ const FoldingDorCabinet = () => {
     error,
     setError,
     savePdf,
-    pdfTemplateRef,
+    pdfTemplateRef
   } = useFoldingDorCabinet();
 
   const img = useFoldingDoorCabinetImage(cabinetValues);
   const {translations, setCurrentTranslation, currentTranslation} =
     useTranslationContext();
+
+
+    const [vorunumer, setVorunumer ] = useState(false);
+
+  const saveToPdf = () => {
+    // Ef það er hakað í frá Nobilia þá þarf að setja inn vörunúmer
+    if(cabinetValues.carcase_nobilia && !vorunumer) {
+        setVorunumer(true);
+    } else {
+      savePdf();
+    }
+  }
+
+  const closeDialog = () => {
+    savePdf();
+    setVorunumer(false);
+  }
 
   return (
     <>
@@ -267,12 +289,71 @@ const FoldingDorCabinet = () => {
               variant='extended'
               size='small'
               color='primary'
-              onClick={savePdf}>
+              onClick={saveToPdf}>
               {translations.savepdf}
             </Fab>
           </Box>
         </Box>
+
       </Container>
+
+      <Dialog
+        aria-labelledby="customized-dialog-title"
+        open={vorunumer}
+        fullScreen
+      >
+        <DialogTitle sx={{ m: 0, p: 2 }} id="customized-dialog-title">
+          {translations.vorunumer}
+        </DialogTitle>
+        <DialogContent dividers>
+        <Grid container gap={2} pt={2} className='container'>
+            <Input
+              TitleText={translations.hilla_vorunumer}
+              size={2}
+              value={cabinetValues.hilla_vorunumer}
+              valueVariable={[
+                cabinetValues.hilla_vorunumer,
+                update, 
+                `hilla_vorunumer`
+              ]}
+            />
+            <Input
+              TitleText={translations.hurd_vorunumer}
+              size={2}
+              value={cabinetValues.hurd_vorunumer}
+              valueVariable={[
+                cabinetValues.hurd_vorunumer,
+                update, 
+                `hurd_vorunumer`
+              ]}
+            />
+            <Input
+                TitleText={translations.bak_vorunumber}
+                size={2}
+                value={cabinetValues.bak_vorunumer}
+                valueVariable={[cabinetValues.bak_vorunumer, update, "bak_vorunumer"]}
+              />
+            <Input
+                TitleText={translations.toppur_vorunumer}
+                size={2}
+                value={cabinetValues.toppur_vorunumer}
+                valueVariable={[cabinetValues.toppur_vorunumer, update, "toppur_vorunumer"]}
+              />
+            <Input
+                TitleText={translations.hlid_vorunumer}
+                size={2}
+                value={cabinetValues.hlid_vorunumer}
+                valueVariable={[cabinetValues.hlid_vorunumer, update, "hlid_vorunumer"]}
+              />
+          </Grid>
+        </DialogContent>
+        <DialogActions>
+          <Button autoFocus onClick={closeDialog}>
+            {translations.vista_vorunumer}
+          </Button>
+        </DialogActions>
+      </Dialog>
+
       <CustomizedSnackbars
         open={error}
         setOpen={setError}

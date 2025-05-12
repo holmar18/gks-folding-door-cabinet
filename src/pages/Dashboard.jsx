@@ -22,6 +22,8 @@ import {ClickAwayListener} from "@mui/base/ClickAwayListener";
 import gksLogo from "../assets/gks-logo.png";
 // Router
 import Routing from "../router/Routing";
+// contexts
+import { useTranslationContext } from "../context/TranslationContext";
 
 const drawerWidth = 200;
 
@@ -72,6 +74,10 @@ const Drawer = styled(MuiDrawer, {
 const defaultTheme = createTheme();
 
 export default function Dashboard() {
+
+  const {translations, setCurrentTranslation, currentTranslation} =
+      useTranslationContext();
+
   const [open, setOpen] = useState(true);
   const [route, setRoute] = useState("");
   const toggleDrawer = () => {
@@ -149,14 +155,14 @@ export default function Dashboard() {
           <Divider />
           <List component='nav'>
             <ListItemButton onClick={() => setRoute("")}>
-              <ListItemText primary='Heim' />
+              <ListItemText primary={translations.dashboard_Navigation.home} />
             </ListItemButton>
             <Divider sx={{my: 1}} />
             <ListItemButton onClick={() => setRoute("fdc")}>
-              <ListItemText primary='Tækjaskápur' />
+              <ListItemText primary={translations.dashboard_Navigation.tækjaskapur} />
             </ListItemButton>
             <ListItemButton onClick={() => setRoute("doors")}>
-              <ListItemText primary='Hurðar' />
+              <ListItemText primary={translations.dashboard_Navigation.hurdar} />
             </ListItemButton>
             <Divider sx={{my: 1}} />
           </List>
