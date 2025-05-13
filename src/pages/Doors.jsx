@@ -11,7 +11,7 @@ import Divider from "@mui/material/Divider";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Fab from "@mui/material/Fab";
-
+import Paper from "@mui/material/Paper";
 // Utils
 import currentDate from "../utils/currentDate";
 // Hooks
@@ -40,7 +40,13 @@ const Doors = () => {
   const tableRef = useRef(null);
 
   return (
-    <>
+    <Paper
+      sx={{
+        p: 2,
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}>
       <Container ref={singleItemRef}>
         <Grid container>
           <Grid item xs={8}>
@@ -567,7 +573,7 @@ const Doors = () => {
           </Grid>
         </Container>
       ) : null} */}
-    </>
+    </Paper>
   );
 };
 

@@ -180,21 +180,9 @@ export default function Dashboard() {
             overflow: "auto",
           }}>
           <Toolbar />
-          <Container maxWidth='lg' sx={{mt: 4, mb: 4}}>
-            <Grid container spacing={3}>
+          <Container maxWidth='lg' sx={{mt: 4, mb: 4, display: "flex", justifyContent: "center"}}>
               {/* Recent Orders */}
-              <Grid item xs={12}>
-                <Paper
-                  sx={{
-                    p: 2,
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                  }}>
-                  <Routing route={route} />
-                </Paper>
-              </Grid>
-            </Grid>
+                <Routing route={route} />
           </Container>
         </Box>
       </Box>

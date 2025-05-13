@@ -2,17 +2,20 @@
 import FoldingDorCabinet from "../pages/FoldingDorCabinet";
 import Doors from "../pages/Doors";
 // Images
-import coverImg from "../assets/cover.webp";
+import coverImg from "../assets/gks-svg.svg";
 
 const Routing = ({route}) => {
   if (route === "") {
     return (
       <>
         <img
+          className="pulse"
           src={coverImg}
           alt='cover-img'
           style={{
-            width: "950px",
+            alignSelf: "center",
+            width: "800px",
+            opacity: 0.5,
             borderTopLeftRadius: "1rem",
             borderTopRightRadius: "4rem",
             borderBottomLeftRadius: "4rem",

@@ -15,6 +15,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import Button from '@mui/material/Button';
+import Paper from "@mui/material/Paper";
 // Components
 import FoldingDoorCabinetTable from "../components/FoldingDoorCabinetTable";
 import CustomizedSnackbars from "../components/SnackBar";
@@ -61,7 +62,13 @@ const FoldingDorCabinet = () => {
   }
 
   return (
-    <>
+    <Paper
+      sx={{
+        p: 2,
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}>
       <Container ref={pdfTemplateRef}>
         <h1>{translations.Tækjaskapur}</h1>
         <Divider />
@@ -360,7 +367,7 @@ const FoldingDorCabinet = () => {
         text={errorText}
         severity='error'
       />
-    </>
+    </Paper>
   );
 };
 
