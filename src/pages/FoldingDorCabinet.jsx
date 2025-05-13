@@ -261,13 +261,14 @@ const FoldingDorCabinet = () => {
             </Grid>
           </Grid>
 
-          <Grid container mb={8} mt={16}>
-            <FoldingDoorCabinetTable
-              cv={cabinetValues}
-              tableRows={FdcTabelData(cabinetValues)}
-            />
-          </Grid>
         </Box>
+
+        <Grid container mb={8} mt={16}>
+          <FoldingDoorCabinetTable
+            cv={cabinetValues}
+            tableRows={FdcTabelData(cabinetValues)}
+          />
+        </Grid>
 
         <Box
           sx={{
