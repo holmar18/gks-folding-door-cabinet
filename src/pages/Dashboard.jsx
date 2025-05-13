@@ -115,6 +115,7 @@ export default function Dashboard() {
             <Toolbar
               sx={{
                 pr: "24px", // keep right padding when drawer closed
+                backgroundColor: "#252927"
               }}>
               <IconButton
                 edge='start'

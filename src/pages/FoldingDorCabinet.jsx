@@ -72,200 +72,202 @@ const FoldingDorCabinet = () => {
       <Container ref={pdfTemplateRef}>
         <h1>{translations.Tækjaskapur}</h1>
         <Divider />
-
-        <Grid container gap={4} pt={1} className='container'>
-          <Input
-            TitleText={translations.Viðskiptavinur}
-            size={4}
-            value={cabinetValues.customer}
-            valueVariable={[cabinetValues.customer, update, "customer"]}
-          />
-          <Input
-            TitleText={translations.Sölumaður}
-            value={cabinetValues.seller}
-            valueVariable={[cabinetValues.seller, update, "seller"]}
-          />
-          <Input TitleText={translations.Dags} value={currentDate()} />
-        </Grid>
-
-        <Grid container gap={4} pt={4} className='container'>
-          <Grid item xs={4} m={4} className='container'>
-            <img src={img} alt='cabinet' />
+        <Box sx={{width: "80%", marginLeft: "auto", marginRight: "auto"}}> 
+          <Grid container gap={6} pt={1}>
+            <Input
+              TitleText={translations.Viðskiptavinur}
+              size={4}
+              value={cabinetValues.customer}
+              valueVariable={[cabinetValues.customer, update, "customer"]}
+            />
+            <Input
+              TitleText={translations.Sölumaður}
+              value={cabinetValues.seller}
+              size={3}
+              valueVariable={[cabinetValues.seller, update, "seller"]}
+            />
+            <Input TitleText={translations.Dags} value={currentDate()} />
           </Grid>
 
-          <Grid item xs={4} gap={4}>
+          <Grid container gap={4} pt={4}>
+            <Grid item xs={6} m={4} className='container'>
+              <img src={img} alt='cabinet' />
+            </Grid>
+
+            <Grid item xs={4} gap={4}>
+              <Input
+                TitleText={translations.Breidd}
+                type='number'
+                value={cabinetValues.width}
+                valueVariable={[cabinetValues.width, update, "width"]}
+              />
+              <Input
+                TitleText={translations.Hæð}
+                type='number'
+                value={cabinetValues.height}
+                valueVariable={[cabinetValues.height, update, "height"]}
+              />
+              <Input
+                TitleText={translations.Dýpt}
+                type='number'
+                value={cabinetValues.depth}
+                valueVariable={[cabinetValues.depth, update, "depth"]}
+              />
+              <SelectInput
+                values={[16, 19]}
+                update={update}
+                changeLabel='thickness'
+                label={translations.Þykkt}
+                value={cabinetValues.thickness}
+              />
+              <Input
+                TitleText={translations.Innmatur_litur}
+                value={cabinetValues.carcase_color}
+                valueVariable={[
+                  cabinetValues.carcase_color,
+                  update,
+                  "carcase_color",
+                ]}
+              />
+              <Input
+                TitleText={translations.Kantliming_litur}
+                value={cabinetValues.edge_color}
+                valueVariable={[cabinetValues.edge_color, update, "edge_color"]}
+              />
+              <CheckBox
+                TitleText={translations.Innmatur_fra_nobilia}
+                update={update}
+                changeLabel='carcase_nobilia'
+                value={cabinetValues.carcase_nobilia}
+              />
+              <CheckBox
+                TitleText={translations.Breyta_hja_gks}
+                update={update}
+                mt={0}
+                isDisabled={!cabinetValues.carcase_nobilia}
+                changeLabel='carcase_change_gks'
+                value={cabinetValues.carcase_change_gks}
+              />
+            </Grid>
+          </Grid>
+
+          <Grid container gap={6}>
             <Input
-              TitleText={translations.Breidd}
+              TitleText={translations.Hillu_fjoldi}
+              size={4}
               type='number'
-              value={cabinetValues.width}
-              valueVariable={[cabinetValues.width, update, "width"]}
+              value={cabinetValues.shelf_count}
+              valueVariable={[cabinetValues.shelf_count, update, "shelf_count"]}
             />
             <Input
-              TitleText={translations.Hæð}
+              TitleText={translations.Hillu_litur}
+              size={3}
+              value={cabinetValues.shelf_color}
+              valueVariable={[cabinetValues.shelf_color, update, "shelf_color"]}
+            />
+            <Input
+              TitleText={translations.Hillu_dypt}
+              size={3}
               type='number'
-              value={cabinetValues.height}
-              valueVariable={[cabinetValues.height, update, "height"]}
-            />
-            <Input
-              TitleText={translations.Dýpt}
-              type='number'
-              value={cabinetValues.depth}
-              valueVariable={[cabinetValues.depth, update, "depth"]}
-            />
-            <SelectInput
-              values={[16, 19]}
-              update={update}
-              changeLabel='thickness'
-              label={translations.Þykkt}
-              value={cabinetValues.thickness}
-            />
-            <Input
-              TitleText={translations.Innmatur_litur}
-              value={cabinetValues.carcase_color}
-              valueVariable={[
-                cabinetValues.carcase_color,
-                update,
-                "carcase_color",
-              ]}
-            />
-            <Input
-              TitleText={translations.Kantliming_litur}
-              value={cabinetValues.edge_color}
-              valueVariable={[cabinetValues.edge_color, update, "edge_color"]}
-            />
-            <CheckBox
-              TitleText={translations.Innmatur_fra_nobilia}
-              update={update}
-              changeLabel='carcase_nobilia'
-              value={cabinetValues.carcase_nobilia}
-            />
-            <CheckBox
-              TitleText={translations.Breyta_hja_gks}
-              update={update}
-              mt={0}
-              isDisabled={!cabinetValues.carcase_nobilia}
-              changeLabel='carcase_change_gks'
-              value={cabinetValues.carcase_change_gks}
+              value={cabinetValues.shelf_depth}
+              valueVariable={[cabinetValues.shelf_depth, update, "shelf_depth"]}
             />
           </Grid>
-        </Grid>
 
-        <Grid container gap={2} className='container'>
-          <Input
-            TitleText={translations.Hillu_fjoldi}
-            size={2}
-            type='number'
-            value={cabinetValues.shelf_count}
-            valueVariable={[cabinetValues.shelf_count, update, "shelf_count"]}
-          />
-          <Input
-            TitleText={translations.Hillu_litur}
-            size={3}
-            value={cabinetValues.shelf_color}
-            valueVariable={[cabinetValues.shelf_color, update, "shelf_color"]}
-          />
-          <Input
-            TitleText={translations.Hillu_dypt}
-            size={3}
-            type='number'
-            value={cabinetValues.shelf_depth}
-            valueVariable={[cabinetValues.shelf_depth, update, "shelf_depth"]}
-          />
-        </Grid>
+          <Grid container gap={8} pt={2}>
+            <CheckBox
+              TitleText={translations.Ljos_hillu}
+              update={update}
+              changeLabel='light_Shelf'
+              value={cabinetValues.light_Shelf}
+            />
+            <CheckBox
+              TitleText={translations.Hilla_kom_fra_nobilia}
+              update={update}
+              changeLabel='self_nobila'
+              value={cabinetValues.self_nobila}
+            />
+            <CheckBox
+              TitleText={translations.Þarf_ad_breyta_gks}
+              isDisabled={!cabinetValues.self_nobila}
+              update={update}
+              changeLabel='self_change_gks'
+              value={cabinetValues.self_change_gks}
+            />
+          </Grid>
 
-        <Grid container gap={4} pt={2} className='container'>
-          <CheckBox
-            TitleText={translations.Ljos_hillu}
-            update={update}
-            changeLabel='light_Shelf'
-            value={cabinetValues.light_Shelf}
-          />
-          <CheckBox
-            TitleText={translations.Hilla_kom_fra_nobilia}
-            update={update}
-            changeLabel='self_nobila'
-            value={cabinetValues.self_nobila}
-          />
-          <CheckBox
-            TitleText={translations.Þarf_ad_breyta_gks}
-            isDisabled={!cabinetValues.self_nobila}
-            update={update}
-            changeLabel='self_change_gks'
-            value={cabinetValues.self_change_gks}
-          />
-        </Grid>
-
-        <Grid container gap={4} mt={1} className='container'>
-          <Input
-            TitleText={translations.Ath_1}
-            size={8}
-            pt={2}
-            value={cabinetValues.Athugasemd1}
-            valueVariable={[cabinetValues.Athugasemd1, update, "Athugasemd1"]}
-          />
-        </Grid>
-
-        <Grid container gap={4} mt={6} className='container'>
-          <SelectInput
-            value={cabinetValues.door_count}
-            values={[0, 2, 4]}
-            update={update}
-            changeLabel='door_count'
-            label={translations.Hurða_fjoldi}
-            size={4}
-          />
-          <Input
-            TitleText={translations.Hurða_litur}
-            size={4}
-            value={cabinetValues.door_color}
-            valueVariable={[cabinetValues.door_color, update, "door_color"]}
-          />
-        </Grid>
-
-        <Grid container gap={4} pt={2} className='container'>
-          <CheckBox
-            TitleText={translations.Hurðir_koma_fra_nobilia}
-            isDisabled={cabinetValues.door_count === 0}
-            update={update}
-            changeLabel='doors_nobila'
-            value={cabinetValues.doors_nobila}
-          />
-          <CheckBox
-            TitleText={translations.Hurð_breyta_gks}
-            isDisabled={!cabinetValues.doors_nobila}
-            update={update}
-            changeLabel='doors_change_gks'
-            value={cabinetValues.doors_change_gks}
-          />
-        </Grid>
-
-        <Grid container mt={1} mb={4} className='container'>
-          <Grid item xs={4}>
+          <Grid container gap={4} mt={1}>
             <Input
-              TitleText={translations.Holdur}
-              size={8}
+              TitleText={translations.Ath_1}
+              size={11}
               pt={2}
-              value={cabinetValues.holdur}
-              valueVariable={[cabinetValues.holdur, update, "holdur"]}
+              value={cabinetValues.Athugasemd1}
+              valueVariable={[cabinetValues.Athugasemd1, update, "Athugasemd1"]}
             />
           </Grid>
-          <Grid item xs={4}>
-            <CheckBox
-              TitleText={translations.Fræsa_holdur}
-              isDisabled={cabinetValues.holdur === "" ? true : false}
-              update={update}
-              changeLabel='holdur_fræsa'
-              value={cabinetValues.holdur_fræsa}
-            />
-          </Grid>
-        </Grid>
 
-        <Grid container mb={8} mt={16}>
-          <FoldingDoorCabinetTable
-            cv={cabinetValues}
-            tableRows={FdcTabelData(cabinetValues)}
-          />
-        </Grid>
+          <Grid container gap={8} mt={4}>
+            <SelectInput
+              value={cabinetValues.door_count}
+              values={[0, 2, 4]}
+              update={update}
+              changeLabel='door_count'
+              label={translations.Hurða_fjoldi}
+              size={4}
+            />
+            <Input
+              TitleText={translations.Hurða_litur}
+              size={4}
+              value={cabinetValues.door_color}
+              valueVariable={[cabinetValues.door_color, update, "door_color"]}
+            />
+          </Grid>
+
+          <Grid container gap={8} pt={2}>
+            <CheckBox
+              TitleText={translations.Hurðir_koma_fra_nobilia}
+              isDisabled={cabinetValues.door_count === 0}
+              update={update}
+              changeLabel='doors_nobila'
+              value={cabinetValues.doors_nobila}
+            />
+            <CheckBox
+              TitleText={translations.Hurð_breyta_gks}
+              isDisabled={!cabinetValues.doors_nobila}
+              update={update}
+              changeLabel='doors_change_gks'
+              value={cabinetValues.doors_change_gks}
+            />
+          </Grid>
+
+          <Grid container gap={8} mt={1} mb={4}>
+            <Grid item xs={4}>
+              <Input
+                TitleText={translations.Holdur}
+                size={10}
+                pt={2}
+                value={cabinetValues.holdur}
+                valueVariable={[cabinetValues.holdur, update, "holdur"]}
+              />
+            </Grid>
+            <Grid item xs={4}>
+              <CheckBox
+                TitleText={translations.Fræsa_holdur}
+                isDisabled={cabinetValues.holdur === "" ? true : false}
+                update={update}
+                changeLabel='holdur_fræsa'
+                value={cabinetValues.holdur_fræsa}
+              />
+            </Grid>
+          </Grid>
+
+          <Grid container mb={8} mt={16}>
+            <FoldingDoorCabinetTable
+              cv={cabinetValues}
+              tableRows={FdcTabelData(cabinetValues)}
+            />
+          </Grid>
+        </Box>
 
         <Box
           sx={{
@@ -284,7 +286,7 @@ const FoldingDorCabinet = () => {
               {currentTranslation === "Icelandic" ? "English" : "Icelandic"}
             </Fab>
             <Fab
-              style={{padding: "12px", marginBottom: "0.8rem"}}
+              style={{padding: "12px", marginBottom: "0.8rem", backgroundColor: "#252927"}}
               variant='extended'
               size='small'
               color='primary'
@@ -292,7 +294,7 @@ const FoldingDorCabinet = () => {
               {translations.hreinsa}
             </Fab>
             <Fab
-              style={{padding: "12px"}}
+              style={{padding: "12px", backgroundColor: "#252927"}}
               variant='extended'
               size='small'
               color='primary'
