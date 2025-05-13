@@ -2,7 +2,7 @@
 import FoldingDorCabinet from "../pages/FoldingDorCabinet";
 import Doors from "../pages/Doors";
 // Images
-import coverImg from "../assets/gks-svg.svg";
+import coverImg from "../assets/gks-new-logo.svg";
 
 const Routing = ({route}) => {
   if (route === "") {
@@ -20,6 +20,7 @@ const Routing = ({route}) => {
             borderTopRightRadius: "4rem",
             borderBottomLeftRadius: "4rem",
             borderBottomRightRadius: "1rem",
+            paddingTop: "10%"
           }}
         />
       </>
